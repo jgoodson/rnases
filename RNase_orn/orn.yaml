@@ -1,0 +1,10 @@
+name: orn
+domains:
+  - RNase_T
+examples:
+  - ORN_PSEAE
+  - ORN_ECOLI
+  - ORN_HUMAN
+  - ORN_STRGR
+  - ORN_CORDI
+  - ORN_BURMA
