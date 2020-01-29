@@ -1,0 +1,2718 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+
+  <head>
+          <title>Pfam: 
+
+
+
+Family: DHHA1 (PF02272)
+
+</title>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="Pfam is a large collection of protein families, represented by multiple sequence alignments and hidden Markov models (HMMs)" />
+
+
+<!-- ====================================================================== -->
+<!-- make the site RSS feed discoverable -->
+
+<link href="//xfam.wordpress.com/tag/pfam/feed/"
+      rel="alternate"
+      type="application/rss+xml"
+      title="Pfam News" />
+
+<!-- ====================================================================== -->
+<!-- third-party javascript libraries
+
+     we are now loading third-party libraries from remote sites. We get
+     prototype and scriptaculous from googleapis and the YUI components
+     for tree viewing directly from yahoo
+-->
+
+<!-- prototype / scriptaculous -->
+<!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script> -->
+<!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/prototype/1.7.0/prototype.js"></script> -->
+<!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js"></script> -->
+
+<script type="text/javascript" src="/static/javascripts/third-party/prototype.js"></script>
+<script type="text/javascript" src="/static/javascripts/third-party/scriptaculous.js"></script>
+
+<!-- YUI -->
+<!-- <script type="text/javascript" src="//yui-s.yahooapis.com/2.8.0r4/build/yahoo-dom-event/yahoo-dom-event.js"></script> -->
+<!-- <script type="text/javascript" src="//yui-s.yahooapis.com/2.8.0r4/build/element/element-min.js"></script> -->
+<!-- <script type="text/javascript" src="//yui-s.yahooapis.com/2.8.0r4/build/tabview/tabview-min.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="//yui-s.yahooapis.com/2.8.0r4/build/tabview/assets/skins/sam/tabview.css"/> -->
+<!-- <script type="text/javascript" src="//yui-s.yahooapis.com/2.8.0r4/build/treeview/treeview-min.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="//yui-s.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview.css" /> -->
+<!-- <script type="text/javascript" src="//yui-s.yahooapis.com/2.8.0r4/build/history/history-min.js"></script> -->
+<!-- <script type="text/javascript" src="//yui-s.yahooapis.com/2.8.0r4/build/utilities/utilities.js"></script> -->
+
+<script type='text/javascript' src='/static/javascripts/third-party/yahoo-dom-event.js'></script>
+<script type='text/javascript' src='/static/javascripts/third-party/element-min.js'></script>
+<script type='text/javascript' src='/static/javascripts/third-party/tabview-min.js'></script>
+<script type='text/javascript' src='/static/javascripts/third-party/treeview-min.js'></script>
+<script type='text/javascript' src='/static/javascripts/third-party/history-min.js'></script>
+<script type='text/javascript' src='/static/javascripts/third-party/utilities.js'></script>
+
+<link rel='stylesheet' href='/static/css/prototip.css' type='text/css' />
+<link rel='stylesheet' href='/static/css/tabview.css' type='text/css' />
+<link rel='stylesheet' href='/static/css/treeview.css' type='text/css' />
+
+
+<!-- prototip -->
+<script type='text/javascript' src='/shared/javascripts/prototip.js'></script>
+<script type='text/javascript' src='/shared/javascripts/styles.js'></script>
+<link rel='stylesheet' href='/shared/css/prototip.css' type='text/css' />
+
+<!-- ====================================================================== -->
+<!-- local javascript files -->
+
+<!-- local javascript -->
+<script type="text/javascript" src="/shared/javascripts/sharedFunctions.js"></script>
+<script type="text/javascript" src="/static/javascripts/pfFunctions.js"></script>
+
+<!-- ====================================================================== -->
+<!-- local stylesheets -->
+
+<!-- global stylesheet -->
+<link rel="stylesheet" href="/static/css/pfam.css" type="text/css" />
+<link rel="stylesheet" href="/shared/css/buttons.css" type="text/css" />
+
+<!-- site-specific stylesheet -->
+<link rel="stylesheet" href="/static/css/ebi.css" type="text/css" />
+
+<!-- ====================================================================== -->
+<!-- load dynamically required stylesheets and javascript files-->
+
+
+
+<!-- required javascripts -->
+<script type='text/javascript' src='/static/javascripts/family.js'></script>
+<script type='text/javascript' src='/static/javascripts/excanvas.js'></script>
+<script type='text/javascript' src='/static/javascripts/domain_graphics.js'></script>
+<script type='text/javascript' src='/static/javascripts/domain_graphics_loader.js'></script>
+<script type='text/javascript' src='/shared/javascripts/tree_factory.js'></script>
+<script type='text/javascript' src='/shared/javascripts/sunburst.js'></script>
+<script type='text/javascript' src='/shared/javascripts/sunburst_controller.js'></script>
+
+<!-- javascripts applicable to IE -->
+<!--[if IE]>
+<script type='text/javascript' src='/static/javascripts/canvas.text.js'></script>
+<script type='text/javascript' src='/static/javascripts/faces/optimer-bold-normal.js'></script>
+<script type='text/javascript' src='/static/javascripts/canvas.text.js'></script>
+<script type='text/javascript' src='/static/javascripts/faces/optimer-bold-normal.js'></script>
+<![endif]-->
+
+<!-- styles applicable to all browsers -->
+<link rel='stylesheet' href='/static/css/tab_layout.css' type='text/css' />
+<link rel='stylesheet' href='/static/css/family.css' type='text/css' />
+<link rel='stylesheet' href='/shared/css/wp.css' type='text/css' />
+<link rel='stylesheet' href='/shared/css/sunburst.css' type='text/css' />
+<link rel='stylesheet' href='/shared/css/tree.css' type='text/css' />
+
+<!-- styles applicable to IE6 and below -->
+<!--[if lt IE 7 ]>
+  <link rel="stylesheet" href="/static/css/ie.css" type="text/css" />
+
+    <link rel='stylesheet' href='/static/css/tab_layout_ie.css' type='text/css' />
+    <link rel='stylesheet' href='/static/css/family_ie.css' type='text/css' /><![endif]-->
+
+<!-- styles applicable to all versions of IE -->
+<!--[if IE ]>
+  <link rel="stylesheet" href="/static/css/all_ie.css" type="text/css" / >
+<![endif]-->
+
+<!-- ====================================================================== -->
+<!-- set the favicon -->
+
+<link rel="shortcut icon"
+      type="image/png"
+      href="/static/images/favicon.png" />
+
+<!-- ====================================================================== -->
+
+<!-- google analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50480748-2', 'xfam.org');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<!-- ====================================================================== -->
+
+  </head>
+
+  <body>
+
+        <!--[if IE]>
+        <iframe id="yui-history-iframe" src="/shared/images/blank.gif"></iframe>
+    <![endif]-->
+    <div><input id="yui-history-field" type="hidden" /></div>
+
+    
+<!-- header starts here -->
+
+<div id="header">
+
+  <div id="navbar" class="column">
+    <ul>
+          <li>
+                  <a href="/">HOME</a>
+        &nbsp;|&nbsp;       </li>
+          <li>
+                  <a href="/search">SEARCH</a>
+        &nbsp;|&nbsp;       </li>
+          <li>
+                  <a href="/browse">BROWSE</a>
+        &nbsp;|&nbsp;       </li>
+          <li>
+                  <a href="ftp://ftp.ebi.ac.uk/pub/databases/Pfam">FTP</a>
+        &nbsp;|&nbsp;       </li>
+          <li>
+                  <a href="/help">HELP</a>
+        &nbsp;|&nbsp;       </li>
+          <li>
+                  <a href="/about">ABOUT</a>
+               </li>
+        </ul>
+  </div>
+  
+  <div class="siteLogoHolder column">
+    <a href="https://www.ebi.ac.uk/">
+      <img alt="EMBL-EBI" 
+           id="siteLogo" 
+           src="/shared/images/blank.gif" /></a>
+  </div>
+
+  <div class="pfamLogoHolder column">
+    <a href="/">
+      <img alt="Pfam" 
+           id="pfamLogo" 
+           src="/shared/images/blank.gif" /></a>
+    <form action="/search/keyword" 
+          id="siteSearchForm">
+      <div id="searchBox">
+        <input class="entryField"
+             type="text" 
+             onfocus="if(!ssCleared){this.value='';ssCleared=true;}" 
+             name="query" 
+             id="siteSearchField" />
+        <a class="btn go"
+           onclick="if($F('siteSearchField')){if(ssCleared){$('siteSearchForm').submit();}}">
+          <span class="btn-inner">Go</span></a>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<div class="cleaner"><!-- empty --></div>
+
+<div id="jsWarning" class="warningBox">
+  <strong>Please note:</strong> this site relies heavily on the use of javascript. 
+  Without a javascript-enabled browser, this site will not function correctly. 
+  Please enable javascript and reload the page, or switch to a different browser.
+</div>
+<script type="text/javascript">
+  // <![CDATA[
+  $("jsWarning").hide();
+
+  $("siteSearchField").value = "keyword search";
+  var ssCleared = false;
+  // ]]>
+</script>
+<!-- ves-pg-b6.ebi.ac.uk / 17222 -->
+
+<!-- header end -->
+<div class="cbb" id="contentContainer">
+
+    <!-- start of content -->
+    
+
+
+
+
+
+<div id="icons" class="cbb icons">
+  
+      <span class="link" 
+            onclick="tabPage.switchTab('pdbBlock');" 
+            id="structIcon">
+        <em>74</em>
+        &nbsp;structures
+      </span>
+    
+      <span class="link" 
+            onclick="tabPage.switchTab('speciesBlock');" 
+            id="specIcon">
+        <em>9207</em>
+        &nbsp;species
+      </span>
+    
+      <span class="link" 
+            onclick="tabPage.switchTab('ipfamBlock');" 
+            id="ipfamIcon">
+        <em>2</em>
+        &nbsp;interactions
+      </span>
+    
+      <span class="link" 
+            onclick="tabPage.switchTab('alignBlock');" 
+            id="seqIcon">
+        <em>22460</em>
+        &nbsp;sequences
+      </span>
+    
+      <span class="link" 
+            onclick="tabPage.switchTab('domainsBlock');" 
+            id="archIcon">
+        <em>87</em>
+        &nbsp;architectures
+      </span>
+    
+</div>
+
+
+<div id="tabTitle">
+  
+
+
+
+<h1>Family: <em>DHHA1</em> (PF02272)</h1>
+
+
+</div>
+
+<div id="loadingComponents"
+     class="loading"
+     style="display: none">
+  Loading page components<span id="loadingComponentsCount"></span>&hellip;
+</div>
+
+<div class="cleaner"><!-- empty --></div>
+
+<script type="text/javascript">
+  // <![CDATA[
+
+  var section    = "family";
+  var showTab    = "";
+
+  var tabPage;
+  document.observe( "dom:loaded", function() {
+    // var cb = new CurvedBorders();
+    tabPage = new TabPage();
+  } );
+
+  // ]]>
+</script>
+
+<div id="wrap">
+
+  <div id="tabset" class="yui-navset">
+
+    <div id="sidebar">
+      <ul class="yui-nav">
+          <li id="familySummaryBlockSelector"
+      class="selected">
+    <a href="#familySummaryBlock">Summary</a>
+  </li>
+  <li id="domainsBlockSelector"
+      class="">
+    <a href="#domainsBlock">Domain organisation</a>
+  </li>
+  <li id="clanBlockSelector"
+      class=" disabled">
+    <a href="#clanBlock">Clan</a>
+  </li>
+  <li id="alignBlockSelector"
+      class="">
+    <a href="#alignBlock">Alignments</a>
+  </li>
+  <li id="logoBlockSelector"
+      class="">
+    <a href="#logoBlock">HMM logo</a>
+  </li>
+  <li id="phyloBlockSelector"
+      class="">
+    <a href="#phyloBlock">Trees</a>
+  </li>
+  <li id="curationBlockSelector"
+      class="">
+    <a href="#curationBlock">Curation &amp; model</a>
+  </li>
+  <li id="speciesBlockSelector"
+      class="">
+    <a href="#speciesBlock">Species</a>
+  </li>
+  <li id="ipfamBlockSelector"
+      class="">
+    <a href="#ipfamBlock">Interactions</a>
+  </li>
+  <li id="pdbBlockSelector"
+      class="">
+    <a href="#pdbBlock">Structures</a>
+  </li>
+
+      </ul>
+
+      
+
+<!-- start of the jump box -->
+
+<div id="jumpBox" class="sidebarComponent">
+	<h1>
+		<span>Jump to...</span>
+		<a href="/help?tab=helpGetStartedBlock"
+       title="View help on the &quot;Jump to...&quot; search">
+	 		<img src="/shared/images/info.gif" 
+           alt="View help on the &quot;Jump to...&quot; search" 
+           class="info" /></a>
+	</h1>
+
+	<form action="/search/jump"
+        id="jumpForm"
+        onsubmit="return jump(this);">
+
+    <div>
+  		<input class="entryField" 
+             type="text" 
+             onfocus="if(!jbCleared){this.value='';jbCleared=true;}"
+             size="10" 
+             name="entry" 
+             id="entry" />
+    </div>
+
+    <div>
+      <a class="btn go"
+         onclick="if($F('entry')){if(jbCleared){jump('jumpForm');}}">
+        <span class="btn-inner">Go</span></a>
+    </div>
+
+    <div style="display: none"
+         class="jumpSpinner">Searching...</div>
+
+    <div style="display: none"
+         class="jumpError"></div>
+
+  </form>
+  
+  <script type="text/javascript">
+    // <![CDATA[
+    $("entry").value = "enter ID/acc";
+    var jbCleared = false;
+    // ]]>
+  </script>
+  
+
+	<div class="cleaner"><!-- empty --></div>
+
+  
+
+</div>
+
+<!-- end of the jump box -->
+
+
+    </div> <!-- end of "sidebar" -->
+
+    <div id="content" class="yui-content">
+      
+
+
+
+<!-- start summary block -->
+
+<div class="block" id="familySummaryBlock">
+  <div class="handle">
+    <h1>Summary: DHHA1 domain</h1>
+  </div>
+  <div class="blockContent">
+
+    <p>
+      Pfam includes annotations and additional family information from a range
+      of different sources. These sources can be accessed via the tabs below.
+    </p>
+
+    <div id="summaryTabs" class="nestedTabs yui-navset">
+
+      <ul id="summaryTabsNav" class="yui-nav">
+        <!-- wp -->          <li>
+            <a href="#wpContent">No Wikipedia article</a>
+          </li>
+        <!-- pf -->
+        <li class="selected"><a href="#pfamContent">Pfam</a></li>
+        <!-- ip -->
+        <li>
+          <a href="#interproContent">InterPro</a>
+        </li>
+   <!-- <li><a href="#topsanContent">TopSan</a></li> -->
+      </ul>
+
+      <div class="yui-content">
+
+        <!-- ============================================================== -->
+          <div id="wpContent">
+            <p>
+              The Pfam group coordinates the annotation of Pfam families in  <a
+              class="ext"
+              href="http://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>, but
+              we have not yet assigned a Wikipedia article to this family. If
+              you think that a particular Wikipedia article provides good
+              annotation, please <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#112;&#102;&#097;&#109;&#045;&#104;&#101;&#108;&#112;&#064;&#101;&#098;&#105;&#046;&#097;&#099;&#046;&#117;&#107;">let us know</a>.
+            </p>
+          </div>
+
+        <!-- ============================================================== -->
+
+        <div id="pfamContent" class="pfamData">
+
+          <p>
+                          This tab holds the annotation information that is stored in the Pfam
+              database. As we move to using Wikipedia as our main source of annotation,
+              the contents of this tab will be gradually replaced by the Wikipedia
+              tab.
+                      </p>
+          <div id="siph"
+               class="pdbImageFragment"
+               style="display: none">&nbsp;</div>
+
+          <h1>
+            DHHA1 domain
+            <a id="addAnnotationButton"
+               class="btn go"
+               href="/annotate?acc=PF02272">
+              <span class="btn-inner">Provide feedback</span></a>
+          </h1>
+
+          <p>This domain is often found adjacent to the DHH domain <a href="/family/PF01368">PF01368</a> and is called DHHA1 for DHH associated domain. This domain is diagnostic of DHH subfamily 1 members [<a href="#ref1">1</a>]. This domains is also found in alanyl tRNA synthetase e.g. <a class="ext" href="http://www.uniprot.org/entry/P00957">P00957</a> suggesting that this domain may have an RNA binding function. The domain is about 60 residues long and contains a conserved GG motif.</p>
+
+            <h2>Literature references</h2>
+
+            <ol>
+            
+              <li>
+                <p>
+                  Aravind L, Koonin EV; , Trends Biochem Sci 1998;23:17-19.: A novel family of predicted phosphoesterases includes Drosophila prune protein and bacterial RecJ exonuclease. 
+                  <a name="ref1"
+                     class="ext"
+                     href="http://www.ncbi.nlm.nih.gov/pubmed/9478130">
+                    PUBMED:9478130</a>
+                  <a name="epmc1"
+                     class="ext"
+                     href="http://europepmc.org/abstract/MED/9478130">
+                    EPMC:9478130</a>
+                </p>
+              </li>
+            </ol>
+
+            <hr class="short"/>
+          
+
+              <h2 class="padded">Internal database links</h2>
+    <table class="details links" summary="Internal database links">
+      <tbody>
+              <tr class="even">
+        <td class="label">SCOOP: </td>
+        <td>                  <span class="entry"><a href="/family/ACR_tran">ACR_tran</a>                  </span></td>
+      </tr>
+      </tbody>
+    </table>    <h2 class="padded">External database links</h2>
+    <table class="details links" summary="External database links">
+      <tbody>
+                <tr class="even">
+          <td class="label">SCOP:           </td>
+          <td>                  <span class="entry"><a class="ext" href="http://scop.mrc-lmb.cam.ac.uk/scop/search.cgi?tlev=fa&amp;pdb=1ir6">1ir6</a>                  </span></td>
+        </tr>
+      </tbody>
+    </table>
+        </div> 
+
+        <!-- ============================================================== -->
+
+        <div class="interproData">
+
+          <p>
+            This tab holds annotation information from the
+            <a class="ext" href="http://www.ebi.ac.uk/interpro/">InterPro</a> database.
+          </p>
+
+            <h1 id="interproTitle">
+              InterPro entry
+              <a class="ext" href="http://www.ebi.ac.uk/interpro/entry/IPR003156">IPR003156</a>
+            </h1>
+            
+<p>This domain is often found adjacent to the DHH domain (<a class="ext" href="http://www.ebi.ac.uk/interpro/entry/IPR001667">INTERPRO</a>), and is called DHHA1 for DHH associated domain. DHHA1 is diagnostic of DHH subfamily 1 members [<a class="ext" href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;amp;db=PubMed&amp;amp;dopt=Abstract&amp;amp;list_uids=9478130">PUBMED:9478130</a>]. This domain is also found in alanyl tRNA synthetase (e.g., <a class="ext" href="http://www.uniprot.org/uniprot/P00957">SWISSPROT</a>), suggesting that it may have an RNA binding function. The domain is about 60 residues long and contains a conserved GG motif.</p>
+
+              <h3>Gene Ontology</h3>
+
+              <p>
+                The mapping between Pfam and Gene Ontology is provided by InterPro.
+                If you use this data please
+                <a class="ext" href="http://www.ebi.ac.uk/interpro/references.html">cite</a> InterPro.
+              </p>
+
+              
+              <table class="details links" summary="Gene ontology data">
+                <tbody>
+                                  <tr class="even">
+                                          <td class="label" rowspan="1">
+                        Molecular function
+                      </td>
+                                        <td>
+                      <a href="http://www.ebi.ac.uk/ego/DisplayGoTerm?id=GO:0003676">
+                        nucleic acid binding</a>
+                      (<a href="http://www.ebi.ac.uk/ego/DisplayGoTerm?id=GO:0003676">GO:0003676</a>)
+                    </td>
+                  </tr>
+                                  </tbody>
+              </table>
+
+        </div>
+
+        <!-- ============================================================== -->
+
+   <!-- <div id="topsanContent" class="topsanData">
+          <h1>TopSan</h1>
+          <p>TopSan content</p>
+        </div> -->
+
+      </div> 
+
+    </div> 
+
+  </div> 
+
+  <script type="text/javascript">
+    // <![CDATA[
+
+    var extraContentTabView,
+        wikiContents = [];
+
+    document.observe( "dom:loaded", function() {
+      extraContentTabView = new YAHOO.widget.TabView("summaryTabs");
+
+      var aat = new Tip( "addAnnotationButton",
+        { title: "If you have suggestions for improving this family, please let us know.",
+          hook: { target: 'bottomMiddle', tip: 'topMiddle', mouse: false },
+          delay: 0.5,
+          stem: "topMiddle",
+          style: "pfam",
+          width: "20em",
+          fixed: true }
+      );
+
+
+        var r = new Ajax.Updater(
+          "siph",
+          "/family/PF02272/structures",
+          {
+            evalScripts: true,
+            method: 'get',
+            onSuccess: function( response ) {
+              $("siph").show();
+            }
+          }
+        );
+    } );
+
+    // ]]>
+  </script>
+
+</div>
+
+<!-- end summary block -->
+
+
+
+<!-- start domain architectures block -->
+
+<div class="block" id="domainsBlock"> 
+  <div class="handle"> 
+    <h1>Domain organisation</h1> 
+  </div>
+  <div class="blockContent">
+    <p>
+  	  Below is a listing of the unique domain organisations or architectures in which 
+      this domain is found.
+      <span onclick="reveal( this, 'domainsNotes', false, true );"
+            class="moreLink">
+        More...</span>
+    </p>
+    <div id="domainsNotes" style="display: none">
+      <p>
+        The graphic that is shown by default represents the longest sequence
+        with a given architecture. Each row contains the following information:
+      </p>
+      <ul>
+        <li>
+          the number of sequences which exhibit this architecture
+        </li>
+        <li>
+          a textual description of the architecture, e.g. Gla, EGF x 2, Trypsin. 
+          This example describes an architecture with one <code>Gla</code>
+          domain, followed by two consecutive <code>EGF</code> domains, and
+          finally a single <code>Trypsin</code> domain
+        </li>
+        <li>
+          a link to the page in the Pfam site showing information about the 
+          sequence that the graphic describes
+        </li>
+        <li>
+          the <a class="ext" href="http://www.uniprot.org/">UniProt</a>
+          description of the protein sequence
+        </li>
+        <li>
+          the number of residues in the sequence
+        </li>
+        <li>
+          the Pfam graphic itself.
+        </li>
+      </ul>
+      <p>
+        Note that you can see the family page for a particular domain by 
+        clicking on the graphic. You can also choose to see all sequences which
+        have a given architecture by clicking on the <em>Show</em> link
+        in each row.
+      </p>
+      <p>
+        Finally, because some families can be found in a very large number of
+        architectures, we load only the first fifty architectures by default.
+        If you want to see more architectures, click the button at the bottom
+        of the page to load the next set.
+      </p>
+    </div>
+
+    <div id="dgph">
+      <p class="loading">
+        Loading domain graphics...
+      </p>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // <![CDATA[
+
+    Event.observe( window, "load", function() {
+      var r = new Ajax.Updater(
+        "dgph",
+        "/domaingraphics/PF02272",
+        {
+          method:      'get',
+          evalScripts: true,
+          onFailure:   function() {
+            $("dgph").update( "Domain graphics loading failed." );
+          }
+        }
+      );
+    } );
+
+    // ]]>
+  </script>
+
+</div>
+<!-- end domain architectures block -->
+<div><!-- disabled --></div>
+
+<!-- start align block -->
+
+<div class="block" id="alignBlock">
+  <div class="handle">
+    <h1>Alignments</h1>
+  </div>
+  <div class="blockContent">
+    <p>
+      We store a range of different sequence alignments for families. As well
+      as the seed alignment from which the family is built, we provide the 
+      full alignment, generated by searching the sequence database 
+      (<a class="ext" href="http://www.uniprot.org/help/reference_proteome">reference proteomes</a>) using the
+      family HMM. We also generate alignments using four
+      <a class="ext" href="http://pir.georgetown.edu/rps/">
+        representative proteomes</a> (RP) sets, the UniProtKB sequence database,
+        the NCBI sequence database, and our metagenomics sequence database.
+      <span onclick="reveal( this, 'alignmentsNotes', false, true );"
+            id="alignmentNotesSwitch"
+            class="moreLink">
+        More...</span>
+    </p>
+    <div id="alignmentsNotes" style="display: none">
+      <p>
+        There are various ways to view or download the sequence alignments that
+        we store. We provide several sequence viewers and a plain-text
+        Stockholm-format file for download.
+      </p>
+
+      <h3>Alignment types</h3>
+
+      <p>
+        We make a range of alignments for each Pfam-A family:
+      </p>
+
+      <dl>
+        <dt>seed</dt>
+        <dd>the curated alignment from which the HMM for the family is
+          built</dd>
+        <dt>full</dt>
+        <dd>the alignment generated by searching the sequence database 
+          using the HMM</dd>
+        <dt>RP15/RP35/RP55/RP75</dt>
+        <dd><a class="ext" href="http://pir.georgetown.edu/rps/">
+          Representative Proteomes (RPs)</a> at
+          15%, 35%, 55% and 75% co-membership thresholds</dd>
+        <dt>UniProt</dt>
+        <dd>alignment generated by searching the UniProtKB sequence database
+          using the family HMM</dd>
+        <dt>NCBI</dt>
+        <dd>alignment generated by searching the NCBI sequence database
+          using the family HMM</dd>
+        <dt>meta</dt>
+        <dd>alignment generated by searching the metagenomics sequence database
+          using the family HMM</dd>
+      </dl>
+
+      <h3>Viewing</h3>
+
+      <p>
+        You can see the alignments as HTML or in three different sequence
+        viewers:
+      </p>
+      <dl>
+        <dt>
+          <a class="ext" href="http://www.jalview.org/">jalview</a>
+        </dt>
+        <dd>
+          a Java applet developed at the University of Dundee. You will
+          need <a class="ext" href="http://java.sun.com/">Java</a> installed
+          before running jalview
+        </dd>
+        <dt>
+          HTML
+        </dt>
+        <dd>
+          an HTML page showing the whole alignment.<strong>Please
+          note:</strong> full Pfam alignments can be <em>very</em> large. These
+          HTML views are extremely large and often cause problems for browsers.
+          Please use either jalview or the Pfam viewer if you have trouble
+          viewing the HTML version
+        </dd>
+        <dt>
+          PP/Heatmap
+        </dt>
+        <dd>
+          an HTML-based representation of the alignment, coloured according to 
+          the posterior-probability (PP) values from the HMM. As for the standard HTML
+          view, heatmap alignments can also be very large and slow to render.
+        </dd>
+      </dl>
+
+      <h3>Reformatting</h3>
+
+      <p>
+        You can download (or view in your browser) a text representation of a
+        Pfam alignment in various formats:
+      </p>
+      <ul>
+        <li>Selex</li>
+        <li>Stockholm</li>
+        <li>FASTA</li>
+        <li>MSF</li>
+      </ul>
+      <p>
+        You can also change the order in which sequences are listed in the 
+        alignment, change how insertions are represented, alter the characters
+        that are used to represent gaps in sequences and, finally, choose 
+        whether to download the alignment or to view it in your browser 
+        directly.
+      </p>
+
+      <h3>Downloading</h3>
+
+      <p>
+        You may find that large alignments cause problems for the viewers and
+        the reformatting tool, so we also provide all alignments in Stockholm
+        format. You can download either the plain text alignment, or a gzipped
+        version of it.
+      </p>
+      <hr />
+    </div>
+
+
+
+    <h2>View options</h2>
+
+    <p>
+      We make a range of alignments for each Pfam-A family. You can see a
+      description of each 
+      <span onclick="reveal( this, 'alignmentsNotes', false, true );$('alignmentNotesSwitch').update('Less...');"
+            class="moreLink">above</span>. 
+      You can view these alignments in various ways but please note that some
+      types of alignment are never generated while others may not be available
+      for all families, most commonly because the alignments are too large to
+      handle.
+    </p>
+
+    <table id="viewAlignOpts"
+           class="details"
+           summary="Alignment display options">
+      <thead>
+        <tr>
+          <th class="corner" rowspan="2">&nbsp;</th>
+          <th rowspan="2">Seed<br /><small>(120)</small></th>
+          <th rowspan="2">Full<br /><small>(22460)</small></th>
+          <th colspan="4">Representative proteomes</th>
+          <th rowspan="2">UniProt<br /><small>(64937)</small></th>
+          <th rowspan="2">NCBI<br /><small>(90160)</small></th>
+          <th rowspan="2">Meta<br /><small>(3444)</small></th>
+        </tr>
+        <tr>
+          <th>RP15<br /><small>(6415)</small></th>
+          <th>RP35<br /><small>(15689)</small></th>
+          <th>RP55<br /><small>(22822)</small></th>
+          <th>RP75<br /><small>(31670)</small></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="odd">
+            <td class="label">Jalview</td>
+                  
+                  <td id="jalview_seed" 
+                      class="available">
+                    <span class="link" rel="120" style="display: none !important">View</span>&nbsp;
+                  </td>
+                  
+                  <td id="jalview_full" 
+                      class="available">
+                    <span class="link" rel="22460" style="display: none !important">View</span>&nbsp;
+                  </td>
+                  
+                  <td id="jalview_rp15" 
+                      class="available">
+                    <span class="link" rel="6415" style="display: none !important">View</span>&nbsp;
+                  </td>
+                  
+                  <td id="jalview_rp35" 
+                      class="available">
+                    <span class="link" rel="15689" style="display: none !important">View</span>&nbsp;
+                  </td>
+                  
+                  <td id="jalview_rp55" 
+                      class="available">
+                    <span class="link" rel="22822" style="display: none !important">View</span>&nbsp;
+                  </td>
+                  
+                  <td id="jalview_rp75" 
+                      class="available">
+                    <span class="link" rel="31670" style="display: none !important">View</span>&nbsp;
+                  </td>
+                  
+                  <td id="jalview_uniprot" 
+                      class="available">
+                    <span class="link" rel="64937" style="display: none !important">View</span>&nbsp;
+                  </td>
+                  
+                  <td id="jalview_ncbi" 
+                      class="available">
+                    <span class="link" rel="90160" style="display: none !important">View</span>&nbsp;
+                  </td>
+                  
+                  <td id="jalview_meta" 
+                      class="available">
+                    <span class="link" rel="3444" style="display: none !important">View</span>&nbsp;
+                  </td>
+          </tr>
+          <tr class="even">
+            <td class="label">HTML</td>
+                  
+                  <td id="html_seed" 
+                      class="available">
+                    <span class="link" rel="120" style="display: none !important">View</span>&nbsp;
+                  </td>
+                  
+                  <td class="unavailable toolarge">&nbsp;
+                  </td>
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+          </tr>
+          <tr class="odd">
+            <td class="label">PP/heatmap</td>
+                
+                <td class="notgenerated">
+                    <span class="fn"><sub>1</sub></span>
+                </td>
+              
+                  
+                  <td class="unavailable toolarge">&nbsp;
+                  </td>
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+                
+                <td class="notgenerated">&nbsp;
+                </td>
+              
+          </tr>
+      </tbody>
+    </table>
+
+    
+      <p class="viewAlignOptsFootnote">
+        <small><sup>1</sup>Cannot generate PP/Heatmap alignments for seeds; no PP data available</small>
+      </p>
+      
+    
+    <p id="viewAlignOptsKey">
+      <strong>Key:</strong>
+      <img src="/static/images/tick_18.png" alt="&#10003;" /> available,
+      <img src="/static/images/cross_18.png" alt="x" /> not generated,
+      <strong>&mdash;</strong> not available.
+    </p>
+
+    <script type="text/javascript">
+      // <![CDATA[
+
+      document.observe( "dom:loaded", function() {
+
+        var alignmentSizes = {
+          full: 22460,
+          meta: 3444,
+          ncbi: 90160,
+          rp15: 6415,
+          rp35: 15689,
+          rp55: 22822,
+          rp75: 31670,
+          seed: 120,
+          uniprot: 64937
+        };
+
+        $$("#viewAlignOpts td.available").each( function(cell) {
+          cell.observe( "mouseover", function(e) {
+            var target = Event.findElement( e, "td" );
+            target.addClassName("empty")
+                  .down("span.link").show();
+            var fn = target.down("span.fn");
+            if ( fn !== undefined ) {
+              fn.toggle();
+            }
+          } );
+          cell.observe( "mouseout", function(e) {
+            var target = Event.findElement( e, "td" );
+            target.removeClassName("empty")
+                  .down("span.link").hide();
+            var fn = target.down("span.fn");
+            if ( fn !== undefined ) {
+              fn.toggle();
+            }
+          } );
+          cell.observe( "click", function(e) {
+            var target = Event.findElement( e, "td" );
+            var viewerAndType = target.id.split("_");
+            var viewer = viewerAndType[0],
+                type   = viewerAndType[1];
+
+            if ( viewer == "jalview" ) {
+              var url = "/family/PF02272/alignment/" + type + "/jalview";
+              popUp( url, 'console', 800, 800, 'jalviewWin');
+          
+            } else if ( viewer == "viewer" ) {
+              var url = "/family/PF02272/alignment/" + type + "/dasviewer";
+              popUp( url, 'console', 800, 800, 'viewerWin');
+          
+            } else {
+              var cont = true;
+              if ( alignmentSizes[type] > 1000 ) {
+                cont = confirm("This alignment contains a large number of sequences, " +
+                               "which can cause problems for browsers. \nAre you " +
+                               "sure that you want to try to view it as HTML ?" );
+              }
+              if ( cont ) {
+                url = "/family/PF02272/alignment/" + type + "/" + viewer;
+                popUp( url, 'console', 800, 800, 'viewerWin');
+              }
+            }      
+            return false;
+          } );
+        } );
+
+      } );
+
+      // ]]>
+    </script>
+
+    <h2>Format an alignment</h2>
+    <form action="/family/alignment/download/format" 
+          id="formatForm">
+      <div>
+        <input type="hidden" name="acc" value="PF02272" />
+
+        
+        <table class="details alignOpts" 
+               id="formatAlignOpts"
+               summary="Alignment formatting options">
+          <thead>
+            <tr>
+              <th class="corner" rowspan="2">&nbsp;</th>
+              <th rowspan="2">Seed<br /><small>(120)</small></th>
+              <th rowspan="2">Full<br /><small>(22460)</small></th>
+              <th colspan="4">Representative proteomes</th>
+              <th rowspan="2">UniProt<br /><small>(64937)</small></th>
+              <th rowspan="2">NCBI<br /><small>(90160)</small></th>
+              <th rowspan="2">Meta<br /><small>(3444)</small></th>
+            </tr>
+            <tr>
+              <th>RP15<br /><small>(6415)</small></th>
+              <th>RP35<br /><small>(15689)</small></th>
+              <th>RP55<br /><small>(22822)</small></th>
+              <th>RP75<br /><small>(31670)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="even">
+              <td class="label">Alignment:</td>
+                <td class="radio available">
+                  <input type="radio"
+                         name="alnType"
+                         value="seed"
+                         checked='checked'
+                          />
+                </td>
+              
+                <td class="radio available">
+                  <input type="radio"
+                         name="alnType"
+                         value="full"
+                         
+                          />
+                </td>
+              
+                <td class="radio available">
+                  <input type="radio"
+                         name="alnType"
+                         value="rp15"
+                         
+                          />
+                </td>
+              
+                <td class="radio available">
+                  <input type="radio"
+                         name="alnType"
+                         value="rp35"
+                         
+                          />
+                </td>
+              
+                <td class="radio available">
+                  <input type="radio"
+                         name="alnType"
+                         value="rp55"
+                         
+                          />
+                </td>
+              
+                <td class="radio available">
+                  <input type="radio"
+                         name="alnType"
+                         value="rp75"
+                         
+                          />
+                </td>
+              
+                <td class="radio available">
+                  <input type="radio"
+                         name="alnType"
+                         value="uniprot"
+                         
+                          />
+                </td>
+              
+                <td class="radio available">
+                  <input type="radio"
+                         name="alnType"
+                         value="ncbi"
+                         
+                          />
+                </td>
+              
+                <td class="radio available">
+                  <input type="radio"
+                         name="alnType"
+                         value="meta"
+                         
+                          />
+                </td>
+              
+            </tr>
+            <tr class="odd">
+              <td class="label">Format:</td>
+              <td colspan="9">
+                <span class="button">
+                  <select name="format" id="format">
+                    <option value="pfam" selected="selected">Selex</option>
+                    <option value="stockholm">Stockholm</option>
+                    <option value="fasta">FASTA</option>
+                    <option value="msf">MSF</option>
+                  </select>
+                </span>
+      	      </td>
+            </tr>
+            <tr class="even">
+              <td class="label">Order:</td>
+              <td colspan="9">
+                <span class="button">
+                  <input type="radio" name="order" id="orderT" value="t" checked="checked" />
+                  <label for="orderT">Tree</label>
+                </span>
+                <span class="button">
+                  <input type="radio" name="order" id="orderA" value="a" />
+                  <label for="orderA">Alphabetical</label>
+                </span>
+      	      </td>
+            </tr>
+            <tr class="odd">
+              <td class="label">Sequence:</td>
+              <td colspan="9">
+                <span class="button">
+                  <input type="radio" name="case" id="caseL" value="l" checked="checked" />
+                  <label for="caseL">Inserts lower case</label>
+                </span>
+          			<span class="button">
+                  <input type="radio" name="case" id="caseU" value="u" />
+                  <label for="caseU">All upper case</label>
+                </span>
+      	      </td>
+            </tr>
+            <tr class="even">
+              <td class="label">Gaps:</td>
+              <td colspan="9">
+                <span class="button">
+                  <select name="gaps" id="gaps">
+                    <option value="default" selected="selected">Gaps as "." or "-" (mixed)</option>
+                    <option value="dots">Gaps as "." (dots)</option>
+                    <option value="dashes">Gaps as "-" (dashes)</option>
+                    <option value="none">No gaps (unaligned)</option>
+                  </select>
+                </span>
+      	      </td>
+            </tr>
+            <tr class="odd">
+              <td class="label">Download/view:</td>
+              <td colspan="9">
+                <span class="button">
+                  <input type="radio" name="download" id="downloadD" value="1" checked="checked" />
+                  <label for="downloadD">Download</label>
+                </span>
+                <span class="button">
+                  <input type="radio" name="download" id="downloadV" value="0" />
+                  <label for="downloadV">View</label>
+                </span>
+      	      </td>
+            </tr>
+          </tbody>
+        </table>    
+    
+        <input type="submit" value="Generate" />
+    
+      </div>
+    </form>
+
+    <h2>Download options</h2>
+
+    <p>
+      We make all of our alignments available in Stockholm format.
+      You can download them here as raw, plain text files or as
+      <a class="ext" href="http://www.gzip.org/">gzip</a>-compressed files.       
+    </p>
+
+    <table id="dlAlignOpts"
+           class="details"
+           summary="Alignment download options">
+      <thead>
+        <tr>
+          <th class="corner" rowspan="2">&nbsp;</th>
+          <th rowspan="2">Seed<br /><small>(120)</small></th>
+          <th rowspan="2">Full<br /><small>(22460)</small></th>
+          <th colspan="4">Representative proteomes</th>
+          <th rowspan="2">UniProt<br /><small>(64937)</small></th>
+          <th rowspan="2">NCBI<br /><small>(90160)</small></th>
+          <th rowspan="2">Meta<br /><small>(3444)</small></th>
+        </tr>
+        <tr>
+          <th>RP15<br /><small>(6415)</small></th>
+          <th>RP35<br /><small>(15689)</small></th>
+          <th>RP55<br /><small>(22822)</small></th>
+          <th>RP75<br /><small>(31670)</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td class="label">Raw Stockholm</td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/seed" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/full" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/rp15" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/rp35" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/rp55" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/rp75" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/uniprot" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/ncbi" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/meta" style="display: none">Download</a>
+                &nbsp;
+              </td>
+        </tr>
+        <tr class="even">
+          <td class="label">Gzipped</td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/seed/gzipped" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/full/gzipped" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/rp15/gzipped" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/rp35/gzipped" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/rp55/gzipped" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/rp75/gzipped" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/uniprot/gzipped" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/ncbi/gzipped" style="display: none">Download</a>
+                &nbsp;
+              </td>
+              <td class="available">
+                <a href="/family/PF02272/alignment/meta/gzipped" style="display: none">Download</a>
+                &nbsp;
+              </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      You can also 
+      <a href="/family/PF02272/alignment/long/gzipped">
+        download</a> a FASTA format file containing the 
+      <strong>full-length sequences</strong> for all sequences in the full alignment.
+    </p>
+
+    <script type="text/javascript">
+      // <![CDATA[
+
+      document.observe( "dom:loaded", function() {
+
+        $$("#dlAlignOpts td.available").each( function(cell) {
+          cell.observe( "mouseover", function(e) {
+            var target = Event.findElement( e, "td" );
+            target.addClassName("empty")
+                  .down("a").show();
+          } );
+          cell.observe( "mouseout", function(e) {
+            var target = Event.findElement( e, "td" );
+            target.removeClassName("empty")
+                  .down("a").hide();
+          } );
+        } );
+
+      } );
+
+      // ]]>
+    </script>
+  </div>
+</div>
+
+<!-- end of align block -->
+
+
+
+<!-- start logo block -->
+
+<div class="block" id="logoBlock">
+  <div class="handle">
+    <h1>HMM logo</h1>
+  </div>
+  <div class="blockContent">
+    <p>
+      HMM logos is one way of visualising profile HMMs. Logos provide a
+      quick overview of the properties of an HMM in a graphical form. You can 
+      see a more detailed description of HMM logos and find out how you can 
+      interpret them
+      <a class="ext" href="http://www.biomedcentral.com/1471-2105/15/7/">
+        here</a>.
+      <span onclick="reveal( this, 'logoNotes', false, true );"
+            class="moreLink">
+        More...</span>
+    </p>
+    <div id="logoNotes" style="display: none">
+      <p>
+        If you find these logos useful in your own work, please consider citing
+        the following article:
+      </p>
+      <div class="citation">
+        <span class="title">
+          <a class="ext" 
+             href="http://dx.doi.org/10.1186/1471-2105-5-7">
+            HMM Logos for visualization of protein families</a>: 
+        </span>
+        <span class="authors">
+          B. Schuster-B&#246;ckler, J. Schultz, S. Rahmann
+        </span>
+        <span class="ref">
+          <span class="jrnl">BMC Bioinformatics</span>&nbsp;(2004)
+          &nbsp;5:7
+        </span>
+      </div>
+    </div>
+
+    <div id="logo" style="width: 100%; overflow: auto"></div>
+
+  </div>
+
+  <script type="text/javascript">
+    // <![CDATA[
+    
+    Event.observe( window, "load", function() {
+      var r = new Ajax.Request(
+        "/family/PF02272/logo",
+        {
+          method: 'get',
+          evalScripts: true,
+          onSuccess: function( oResponse ) {
+            $("logo").update( oResponse.responseText );
+          },
+          on204: function( oResponse ) {
+            $("logo").update( "We could not find a logo for this entry." );
+          }
+        }
+      );
+    } );
+
+// ]]> 
+  </script>
+
+</div>
+
+<!-- end of logo block -->
+
+
+
+<!-- start of phyloBlock -->
+
+<div class="block" id="phyloBlock">
+  <div class="handle">
+    <h1>Trees</h1>
+  </div>
+  <div class="blockContent">
+    <p>
+      This page displays the phylogenetic tree for this family's seed
+      alignment. We use 
+      <a class="ext" href="http://www.microbesonline.org/fasttree/">FastTree</a> 
+      to calculate neighbour join trees with a local bootstrap based on 100
+      resamples (shown next to the tree nodes). FastTree calculates
+      approximately-maximum-likelihood phylogenetic trees from our seed
+      alignment.
+    </p> 
+
+    <div id="alignmentTree">
+      <span id="treeSpinner"
+            style="display: none"
+            class="loading">Loading...</span>
+    </div>
+
+    <script type="text/javascript">
+      // <![CDATA[
+
+      document.observe( "dom:loaded", function() {
+
+        // submit the AJAX request that will load the image map and the 
+        // associated <img>
+        var r = new Ajax.Request(
+          "/family/PF02272/tree/html", 
+          { 
+            method: "get",
+            onSuccess: function( oResponse ) {
+              $("alignmentTree").update( oResponse.responseText );
+            },
+            on204: function(){
+              // show a simple error message if we dont get back a tree
+              $("alignmentTree").update(
+                 new Element( "div", { id:      "seed_tree",
+                                       "class": "treemap" } )
+                   .update( "We could not load the tree" )
+              );
+            }
+          }
+        );
+
+      } );
+
+      // ]]>
+    </script>
+
+    <p>
+      <strong>Note:</strong> You can also download the
+      <a href="/family/PF02272/tree/download">data file</a>
+      for the tree.
+    </p>
+
+  </div>
+</div>
+
+<!-- end of phyloBlock -->
+
+
+
+
+
+<!-- start curation block -->
+
+<div class="block" id="curationBlock">
+  <div class="handle">
+    <h1>Curation and family details</h1>
+  </div>
+  <div class="blockContent">
+
+    <p>
+      This section shows the detailed information about the Pfam family. You 
+      can see the definitions of many of the terms in this section in the 
+      <a href="/help?tab=helpGlossaryBlock">glossary</a> and a fuller
+      explanation of the scoring system that we use in the 
+      <a href="/help?tab=helpScoresBlock">scores</a> section of the
+      help pages. 
+    </p>
+
+    <h2>
+      Curation
+      <a href="/help?tab=helpScoresBlock"
+         title="View help on the curation process">
+  	 		<img src="/shared/images/info.gif" 
+             alt="View help on the curation process"
+             class="info" /></a>
+    </h2>
+
+    
+
+  	
+
+    <table class="layout" summary="Curation information for this family">
+  	  <tbody>
+        <tr class="even">
+    		  <td class="label">Seed source:</td>
+  	      <td class="data">
+  	        Bateman A
+            </td>
+    		</tr>
+        <tr class="odd">
+  	      <td class="label">Previous IDs:</td>
+          <td class="data">
+            
+              <span class="inactive">none</span>
+            
+          </td>
+        </tr>
+        <tr class="even">
+  	      <td class="label">Type:</td>
+  	      <td class="data">
+              Family
+  	      </td>
+  	    </tr>
+        <tr class="odd">
+          <td class="label">Sequence Ontology:</td>
+          <td class="data">
+            <a href=http://www.sequenceontology.org/miso/current_svn/term/SO:0100021>SO:0100021</a>
+          </td>
+        </tr>
+        <tr class="even">
+          <td class="label">Author:</td>
+          <td class="data">
+            
+            
+              
+              
+                
+              
+            
+            <a href=https://orcid.org/0000-0002-6982-4660>Bateman A <img align=top src=https://rfam.xfam.org/static/images/orcid.svg height=16></a>
+          </td>
+        </tr>
+        <tr class="odd">
+  	      <td class="label">Number in seed:</td>
+  	      <td class="data">
+            120
+  	      </td>
+  	    </tr>
+        <tr class="even">
+          <td class="label">Number in full:</td>
+    		  <td class="data">
+            22460
+  	      </td>
+  	    </tr>
+        <tr class="odd">
+          <td class="label">Average length of the domain:</td>
+    		  <td class="data">
+            132.30 aa
+  	      </td>
+  	    </tr>
+        <tr class="even">
+          <td class="label">Average identity of full alignment:</td>
+    		  <td class="data">
+            17 %
+  	      </td>
+  	    </tr>
+        <tr class="odd">
+          <td class="label">Average coverage of the sequence by the domain:</td>
+          <td class="data">
+            20.34 %
+          </td>
+        </tr>
+      </tbody>
+  	</table>
+
+    <h2>
+      HMM information
+  	  <a href="/help?tab=helpScoresBlock"
+         title="View help on HMM parameters">
+        <img src="/shared/images/info.gif" 
+             class="info" 
+             alt="View help on HMM parameters" /></a>
+    </h2>
+
+    <table class="layout" summary="HMM information for this family">
+      <tbody>
+        <tr class="even">
+	      <td class="label">HMM build commands:</td>
+          <td class="data">
+            <div><em>build method:</em> hmmbuild  -o /dev/null HMM SEED</div>
+            <div><em>search method:</em> hmmsearch -Z 45638612 -E 1000 --cpu 4 HMM pfamseq</div>
+          </td>
+  	    </tr>
+        <tr class="odd">
+          <td class="label" id="tableLabel">Model details:</td>
+          <td class="data">
+            <table class="details" summary="HMM details">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Sequence</th>
+                  <th>Domain</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="odd">
+                  <td class="label">Gathering cut-off</td>
+                  <td> 25.9</td>
+                  <td> 25.9</td>
+                </tr>
+                <tr class="even">
+                  <td class="label">Trusted cut-off</td>
+                  <td> 25.9</td>
+                  <td> 25.9</td>
+                </tr>
+                <tr class="odd">
+                  <td class="label">Noise cut-off</td>
+                  <td> 25.8</td>
+                  <td> 25.8</td>
+                </tr>
+              </tbody>
+            </table>
+  	      </td>
+        </tr>
+        <tr class="even">
+          <td class="label">Model length:</td>
+          <td class="data">
+            138
+          </td>
+  	    </tr>
+        <tr class="odd">
+          <td class="label">Family (HMM) version:</td>
+          <td class="data">
+            19
+          </td>
+  	    </tr>
+        <tr class="even">
+          <td class="label">Download:</td>
+          <td class="data">
+             <a href="/family/PF02272/hmm">
+               download</a> the raw HMM for this family
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!-- end curation block --> 
+
+
+
+<!-- start species block -->
+
+<div class="block" id="speciesBlock">
+  <div class="handle">
+    <h1>Species distribution</h1>
+  </div>
+  <div class="blockContent">
+
+    <div id="speciesTreeTabs" class="nestedTabs yui-navset">
+
+      <ul id="speciesTreeTabsNav" class="yui-nav">
+        <li class="selected"><a href="#sunburstTreeTab">Sunburst</a></li>
+        <li><a href="#yuiTreeTab">Tree</a></li> 
+      </ul>
+      
+      <div class="yui-content">
+  
+        <!-- start of sunburst tab -->
+
+        <div id="sunburstTreeTab"> 
+
+          
+
+<div id="sunburstControls">
+
+  <div id="sunburstControlsHeader">
+    <h3>Sunburst controls</h3>
+    <span id="sunburstControlsToggle">Hide</span>
+    <div class="cleaner"><!-- empty --></div>
+  </div>
+
+  <div id="sunburstControlsContent">
+    <!-- sub-tree markup will go here -->
+    <div id="weightWrapper"
+         class="sunburstControlPanel">
+      <h3>Weight segments by...</h3>
+      <span>
+        <label for="weightSeq">
+          <input type="radio" name="weight" id="weightSeq" value="1" checked="checked" />
+          number of  sequences
+        </label>
+        <br />
+        <label for="weightSpecies">
+          <input type="radio" name="weight" id="weightSpecies" value="1" />
+          number of  species
+        </label>
+      </span>
+    </div>
+    <div id="sliderWrapper"
+         class="sunburstControlPanel">
+      <h3>Change the size of the sunburst</h3>
+      <div id="sliderSmallScale">Small</div>
+      <div id="sliderLargeScale">Large</div>
+      <div id="sliderScale" class="slider">
+        <div class="handle" style="height:21;width:20"></div>
+      </div>
+    </div>
+    <div id="sunburstColours"
+         class="sunburstControlPanel">
+      <h3>Colour assignments</h3>
+      <table summary="Sunburst colour assignments">
+        <tbody>
+          <tr>
+            <td class="narrow">
+              <img src="/shared/images/sunburst_colours/archea.png" alt="Archea" />
+              Archea
+            </td>
+            <td class="wide">
+              <img src="/shared/images/sunburst_colours/eukaryota.png" alt="Eukaryota" />
+              Eukaryota
+            </td>
+          </tr>
+          <tr>
+            <td class="narrow">
+              <img src="/shared/images/sunburst_colours/bacteria.png" alt="Bacteria" />
+              Bacteria
+            </td>
+            <td class="wide">
+              <img src="/shared/images/sunburst_colours/other_sequences.png" alt="Other sequences" />
+              Other&nbsp;sequences
+            </td>
+          </tr>
+          <tr>
+            <td class="narrow">
+              <img src="/shared/images/sunburst_colours/viruses.png" alt="Viruses" />
+              Viruses
+            </td>
+            <td class="wide">
+              <img src="/shared/images/sunburst_colours/unclassified.png" alt="Unclassified" />
+              Unclassified
+            </td>
+          </tr>
+          <tr>
+            <td class="narrow">
+              <img src="/shared/images/sunburst_colours/viroids.png" alt="Viroids" />
+              Viroids
+            </td>
+            <td class="wide">
+              <img src="/shared/images/sunburst_colours/unclassified_sequence.png" alt="Unclassified sequence" />
+              Unclassified&nbsp;sequence
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="selectionControls"
+         
+         class="sunburstControlPanel">
+      <h3>Selections</h3>
+      <form action="http://pfam.xfam.org/family/PF02272"
+            id="retrieveSelectedSeqs"
+            method="post">
+        <div>
+          <input type="hidden" name="dl" value="1" />
+          <input type="hidden" name="accessions" id="selectedAccessions" />
+        </div>
+      </form>
+      <div>
+        <div id="sunburstSelectionTools">
+          <p>
+            <span id="sunburstAlignSelectionSwitch"
+                  class="link">Align</span> selected sequences to HMM
+          </p>
+          <p>
+            <span id="sunburstDLSelectionSwitch"
+                  class="link">Generate</span> a FASTA-format file
+          </p>
+          <p>
+            <span id="sunburstClearSelection"
+                  class="link">Clear</span> selection
+          </p>
+        </div>
+        <div id="sunburstSpinner"
+              style="display: none"
+              class="loading">Storing selection&hellip;</div>
+      </div>
+      <div id="sunburstSelectionCount"
+           style="display: none">
+        <h4>Currently selected:</h4>
+        <ul>
+          <li><span id="sunburstSequencesCount">0</span> sequences</li>
+          <li><span id="sunburstSpeciesCount">0</span> species</li>
+        </ul>
+        <div class="small"><strong>Note</strong>: selection tools show results in pop-up windows.
+          Please disable pop-up blockers.</div>
+      </div>
+      <div style="display: none" class="errors" id="sunburstErrors"></div>
+    </div>
+  </div>
+
+</div>
+
+<div id="sunburstTreeDesc">
+  <p>
+    This visualisation provides a simple graphical representation of
+    the distribution of this family across species. You can find the
+    original interactive tree in the
+    <span class="link" onclick="speciesTreeTabView.selectTab(1)">
+      adjacent tab</span>.
+    <span onclick="reveal( this, 'sunburstNotes', false, true );"
+          class="moreLink">
+      More...</span>
+  </p>
+
+  <div id="sunburstNotes" style="display: none">
+    <p>
+      This chart is a modified &quot;sunburst&quot; visualisation of
+      the species tree for this family. It shows each node in the
+      tree as a separate arc, arranged radially with the superkingdoms
+      at the centre and the species arrayed around the outermost
+      ring.
+    </p>
+
+    <h2>How the sunburst is generated</h2>
+
+    <p>
+      The tree is built by considering the taxonomic lineage of each
+      sequence that has a match to this family. For each node in the
+      resulting tree, we draw an arc in the sunburst. The radius of
+      the arc, its distance from the root node at the centre of the
+      sunburst, shows the taxonomic level (&quot;superkingdom&quot;,
+      &quot;kingdom&quot;, etc). The length of the arc represents
+      either the number of sequences represented at a given level, or
+      the number of species that are found beneath the node in the
+      tree. The weighting scheme can be changed using the sunburst
+      controls.
+    </p>
+    <p>
+      In order to reduce the complexity of the representation, we
+      reduce the number of taxonomic levels that we show. We consider
+      only the following eight major taxonomic levels:
+    </p>
+    <ul>
+      <li>superkingdom</li>
+      <li>kingdom</li>
+      <li>phylum</li>
+      <li>class</li>
+      <li>order</li>
+      <li>family</li>
+      <li>genus</li>
+      <li>species</li>
+    </ul>
+
+    <h2>Colouring and labels</h2>
+
+    <p>
+      Segments of the tree are coloured approximately according to
+      their superkingdom. For example, archeal branches are coloured
+      with shades of orange, eukaryotes in shades of purple, etc. The
+      colour assignments are shown under the sunburst controls. Where
+      space allows, the name of the taxonomic level will be written on
+      the arc itself.
+    </p>
+    <p>
+      As you move your mouse across the sunburst, the current node
+      will be highlighted. In the top section of the controls panel we
+      show a summary of the lineage of the currently highlighed node.
+      If you pause over an arc, a tooltip will be shown, giving the
+      name of the taxonomic level in the title and a summary of the
+      number of sequences and species below that node in the tree.
+    </p>
+
+    <h2>Anomalies in the taxonomy tree</h2>
+
+    <p>
+      There are some situations that the sunburst tree cannot easily
+      handle and for which we have work-arounds in place.
+    </p>
+
+    <h3>Missing taxonomic levels</h3>
+
+    <p>
+      Some species in the taxonomic tree may not have one or more of
+      the main eight levels that we display. For example, <em>Bos
+      taurus</em> is not assigned an order in the NCBI taxonomic tree.
+      In such cases we mark the omitted level with, for example,
+      &quot;No order&quot;, in both the tooltip and the lineage
+      summary.
+    </p>
+
+    <h3>Unmapped species names</h3>
+
+    <p>
+      The tree is built by looking at each sequence in the full
+      alignment for the family. We take the name of the species given
+      by UniProt and try to map that to the full taxonomic tree from
+      NCBI. In some cases, the name chosen by UniProt does not map to
+      any node in the NCBI tree, perhaps because the chosen name is
+      listed as a synonym or a misspelling in the NCBI taxonomy.
+    </p>
+    <p>
+      So that these nodes are not simply omitted from the sunburst
+      tree, we group them together in a separate branch (or segment of
+      the sunburst tree). Since we cannot determine the lineage for
+      these unmapped species, we show all levels between the
+      superkingdom and the species as &quot;uncategorised&quot;.
+    </p>
+
+    <h3>Sub-species</h3>
+
+    <p>
+      Since we reduce the species tree to only the eight main
+      taxonomic levels, sequences that are mapped to the sub-species
+      level in the tree would not normally be shown. Rather than leave
+      out these species, we map them instead to their parent species.
+      So, for example, for sequences belonging to one of the
+      <em>Vibrio cholerae</em> sub-species in the NCBI taxonomy, we
+      show them instead as belonging to the species <em>Vibrio
+      cholerae</em>.
+    </p>
+
+    <h3>Too many species/sequences</h3>
+
+    <p>
+      For large species trees, you may see blank regions in the outer
+      layers of the sunburst. These occur when there are large numbers
+      of arcs to be drawn in a small space. If an arc is less than
+      approximately one pixel wide, it will not be drawn and the space
+      will be left blank. You may still be able to get some
+      information about the species in that region by moving your mouse
+      across the area, but since each arc will be very small, it will
+      be difficult to accurately locate a particular species.
+    </p>
+
+    <hr />
+  </div>
+</div>
+
+<div id="sunburst">
+  <span class="loading">Loading sunburst data...</span>
+</div>
+
+<script type="text/javascript">
+  // <![CDATA[
+
+  var sunburstController,
+      treeData;
+
+  document.observe("dom:loaded", function() {
+    var handleFailure = function(errorMessage) {
+      var sunburst = document.getElementById("sunburst");
+      var controls = document.getElementById("sunburstControls");
+      sunburst.innerText = errorMessage || "There was a problem";
+      controls.style.display = "none";
+    }
+
+    var r = new Ajax.Request(
+      "/family/PF02272/sunburst/json",
+      {
+        method: "get",
+        onSuccess: function( response ) {
+          treeData = response.responseJSON;
+          if (treeData.children.length === 0) {
+            handleFailure(
+              "There are no data about this family for this sunburst"
+            );
+          } else {
+            sunburstController = new SunburstController(
+              "/family/PF02272",
+              treeData,
+              "pfam"
+            );
+          }
+        },
+        onFailure: function() {
+          handleFailure(
+            "There was a problem retrieving the sunburst data for this family"
+          );
+        }
+      }
+    );
+
+  } );
+
+  // ]]>
+</script>
+
+
+        </div>
+
+        <!-- end of sunburst tab -->
+
+        <!-- start of yui-tree tab -->
+
+        <div id="yuiTreeTab">
+
+          
+
+<div id="treeTools">
+
+  <div id="toolsHeader">
+    <h3>Tree controls</h3>
+    <span id="toolsToggle">Hide</span>
+		<div class="cleaner"><!-- empty --></div>
+  </div>
+
+  <div id="toolsContent" style="display: none">
+
+    <ul class="bare">
+      <li>
+        Fully <a href="#" onclick="tree.expandAll();return false;">expand</a> tree
+      </li>
+      <li>
+        Fully <a href="#" onclick="tree.collapseAll();return false;">collapse</a> tree
+      </li>
+      <li>
+        <div id="ddph">Expand tree...</div>
+      </li>
+    </ul>
+
+    <h3>Annotation</h3>
+    <ul class="bare"> 
+      <li>
+        <a id="seedToggle" 
+           href="#"
+           onclick="toggleHighlightSeed();return false;">Hide</a> highlighting 
+        of species in seed
+      </li>
+      <li>
+        <a id="sumToggle"
+           href="#"
+           onclick="toggleShowSummaries();return false;">Hide</a> summaries
+      </li>
+      <li>
+        Key: <span class="specSum">species</span>, 
+             <span class="seqSum">sequences</span>,
+             <span class="domSum">regions</span>
+      </li>
+    </ul>
+
+    <h3>Download tree</h3>
+    <ul class="bare">
+      <li>
+        <a href="/speciestree/text?loadTree=1&amp;acc=PF02272">Save</a> 
+        a text representation
+      </li>
+    </ul>
+    
+    <h3>Selected sequences</h3>
+    <ul class="bare">
+      <li class="small">
+        (<span class="link" onclick="unhighlightAll();">Uncheck</span> all)
+      </li>
+        <li>
+          <em>View</em>
+          <ul>
+            <li>
+              <span onclick="collectSequences( 'G', 'PF02272' );"
+                    class="link">graphically</span>
+            </li>
+              <li>
+                as an
+                <span onclick="collectSequences( 'A', 'PF02272' );"
+                      class="link">alignment</span>
+              </li>
+          </ul>
+        </li>
+        <li>
+          <em>Download</em>
+          <ul>
+            <li>
+              <span onclick="collectSequences( 'L', 'PF02272' );"
+                    class="link">sequence accessions</span>
+            </li>
+            <li>
+              <span onclick="collectSequences( 'F', 'PF02272' );"
+                    class="link">sequences</span> in FASTA format
+            </li>
+          </ul>
+        </li>
+      
+      <li id="stError"
+          style="display: none" ></li>
+    </ul>
+
+  </div>
+
+</div>
+
+
+<div id="speciesTreeDesc">
+  <p>
+    The tree shows the occurrence of this domain across different species.
+    <span onclick="reveal( this, 'speciesNotes', false, true );"
+          class="moreLink">
+      More...</span>
+  </p>
+
+  <div id="speciesNotes" style="display: none">
+    <h2>Species trees</h2>
+    <p>
+      We show the species tree in one of two ways. For smaller trees we try
+      to show an interactive representation, which allows you to select
+      specific nodes in the tree and view them as an alignment or as a set 
+      of Pfam domain graphics.
+    </p>
+    <p>
+      Unfortunately we have found that there are problems viewing the 
+      interactive tree when the it becomes larger than a certain limit. 
+      Furthermore, we have found that Internet Explorer can become 
+      unresponsive when viewing some trees, regardless of their size. 
+      We therefore show a text representation of the species tree when the
+      size is above a certain limit or if you are using Internet Explorer
+      to view the site.
+    </p>
+    <p>
+      If you are using IE you can still load the interactive tree by 
+      clicking the &quot;Generate interactive tree&quot; button, but please 
+      be aware of the potential problems that the interactive species tree 
+      can cause.
+    </p>
+    
+    <h3>Interactive tree</h3>
+    <p>
+      For all of the domain matches in a full alignment, we count the 
+      number that are found on all sequences in the alignment. 
+      This total is shown in the <span class="domSum">purple</span> box.
+    </p>
+    <p>
+      We also count the number of unique sequences on which each domain is 
+      found, which is shown in <span class="seqSum">green</span>.
+      <strong>Note</strong> that a domain may appear multiple times on the
+      same sequence, leading to the difference between these two numbers.
+    </p>
+    <p>
+      Finally, we group sequences from the same organism according to the 
+      <a class="ext" href="http://www.ncbi.nlm.nih.gov/"><acronym 
+      title="National Center for Biotechnology Information">NCBI</acronym></a> 
+      code that is assigned by
+      <a class="ext" href="http://www.uniprot.org/">UniProt</a>, 
+      allowing us to count the number of distinct sequences on which the 
+      domain is found. This value is shown in the <span class="specSum">
+        pink</span> boxes.
+    </p>
+    <p>
+      We use the NCBI species tree to group organisms according to their 
+      taxonomy and this forms the structure of the displayed tree.
+      <strong>Note</strong> that in some cases the trees are too large (have
+      too many nodes) to allow us to build an interactive tree, but in most
+      cases you can still view the tree in a plain text, non-interactive
+      representation. Those species which are represented in the seed
+      alignment for this domain are <span class="highlightSeed">
+        highlighted</span>.
+    </p>
+    <p>
+      You can use the tree controls to manipulate how the interactive tree
+      is displayed:
+    </p>
+    <ul>
+      <li>show/hide the summary boxes</li>
+      <li>highlight species that are represented in the seed alignment</li>
+      <li>expand/collapse the tree or expand it to a given depth</li>
+      <li>select a sub-tree or a set of species within the tree and view
+        them graphically or as an alignment</li>
+      <li>save a plain text representation of the tree</li>
+    </ul>
+    <hr />
+  </div>
+
+</div>
+
+<div id="treeDiv" class="ygtv-checkbox">
+  <p id="stph" class="loading">Loading...</p>
+  <p>
+    <strong>Please note:</strong> for large trees this can take some time.
+    While the tree is loading, you can safely switch away from this
+    tab but if you browse away from the family page entirely, the tree
+    will not be loaded.
+  </p>
+</div>
+
+
+
+
+<script type="text/javascript">
+  // <![CDATA[
+  var ielt8 = true;
+  //]]>
+</script>
+
+<!--[if lt IE 8]>
+<script type="text/javascript">
+  // <![CDATA[
+  var ielt8 = false;
+  //]]>
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+  // <![CDATA[
+
+  // set parameters that are used by the tree controls 
+
+  // a hash that maps between the ID of the summary node and the TaskNode object
+  var nodeMapping = {};
+
+  // a hash that maps between the ID of the summary node and string of sequence 
+  // accessions
+  var nodeSequences = {};
+
+  // a flag showing whether the tree was build and has nodes
+  var treeBuiltSuccessfully;
+
+  // the function that loads the tree and renders it
+  var tree;
+  var stSuccess = function( oResponse ) {
+
+    // build the tree widget and get a handle on the root, which we'll need
+    // when eval'ing the javascript from the server
+    tree = new YAHOO.widget.TreeView("treeDiv");
+    var root = tree.getRoot();
+
+    // eval the JS that the server generates. This is the set of calls that
+    // build the TreeView widget object tree
+    try {
+      eval( oResponse.responseText );
+    } catch( e ) {
+      // dont care
+    }
+
+    tree.subscribe( "clickEvent", tree.onEventToggleHighlight );
+    tree.setNodesProperty( "propagateHighlightUp",   true );
+    tree.setNodesProperty( "propagateHighlightDown", true );
+
+    // by this point the tree was successfully built, but the response might
+    // have contained a message rather than tree components. If there was a
+    // a tree, we must have more than just the root node
+    if ( treeBuiltSuccessfully ) {
+
+      // we got a tree; render it
+      tree.render();
+
+      // bring back the control panel
+      $("treeTools").show()
+                    .setOpacity(0.85);
+      try {
+        new Draggable( "treeTools" );
+      } catch (e) {
+        // dont care
+      }
+    
+    } else {
+
+      // if this flag isnt even set, then the AJAX response didnt contain
+      // the javascript to set it, so we assume instead that theres an 
+      // error message in there
+      if ( treeBuiltSuccessfully == undefined ) {
+        $("treeDiv").update( oResponse.responseText );
+      } else {
+        $("treeDiv").update( "There was a problem building the species tree." );
+      }
+
+      // hide the control panel too
+      $("treeTools").hide();
+    }
+  };
+
+  var stFailure = function() {
+    $("treeDiv").update( "Tree loading failed." );
+  }
+
+  // this is an extra method to submit a new ajax request, this time with
+  // the "loadTree" flag set, which tells the controller to load the tree
+  // even its large
+  var forceLoad = function() {
+  
+    // show the new spinner and disable the button
+    $("secondaryLoadingSpinner").show();
+    $("generateButton").disable();
+
+    // override the test for IE and the "loadTree" check, to force tree loading
+    var r = new Ajax.Request(
+      "/speciestree/interactive",
+      {
+        method:     'get',
+        parameters: { acc:      "PF02272",
+                      ie:       false,
+                      loadTree: 1 },
+        onSuccess:  stSuccess,
+        onFailure:  stFailure
+      }
+    );
+  };
+
+  // the parameters for the initial ajax call to build the tree
+  var stUri;
+  if( Prototype.Browser.IE && ielt8 ) {
+    stUri = "/speciestree/text";
+  } else {
+    stUri = "/speciestree/interactive";
+  }
+
+  // fire off the request to load the tree
+  //Event.observe( window, "load", function() {
+  //  var r = new Ajax.Request(
+  //    stUri,
+  //    {
+  //      method:     'get',
+  //      parameters: { acc: "PF02272",
+  //                    ie:  Prototype.Browser.IE },
+  //      onSuccess:  stSuccess,
+  //      onFailure:  stFailure
+  //    }
+  //  );
+  //} );
+
+  // ]]>
+</script>
+
+
+<script type="text/javascript">
+  // <![CDATA[
+
+  document.observe("dom:loaded", function() {
+
+    // show/hide the species tree controls when the toggle button is clicked
+    var th  = $("toolsToggle");
+    th.observe("click",function() {
+      toggleTools( th, "toolsContent" );
+    } );
+
+  } );
+
+  // ]]>
+</script>
+
+
+
+        </div>
+
+        <!-- end of yui-tree tab -->
+
+      </div> 
+      
+    </div> 
+
+  </div>
+
+  
+  <script type="text/javascript">
+    // <![CDATA[
+
+    
+    // the URL for storing the list of selected IDs 
+    var selectStoreURI = "/speciestree/store_ids";
+
+    // the URL to visit when the user selects nodes and wants to view the
+    // selected sequences as domain graphics
+    var selectGraphicsURI = "/speciestree/graphics";
+
+    
+    // the URL to visit when the user selects nodes and wants to view the 
+    // selected sequences as an alignment - Pfam specific
+    var selectPfamAlignmentURI = "/family/PF02272/alignment/build";
+
+    // the URL to visit when the user selects nodes and wants to download the 
+    // selected sequences as an alignment - Rfam specific
+    var selectRfamAlignmentURI = "/speciestree/alignment";
+
+    // the URL to visit when the user selects nodes and wants to download the 
+    // selected sequence accessions
+    var selectAccessionsURI = "/speciestree/accessions";
+
+    // the URL to visit when the user selects nodes and wants to download the 
+    // selected sequences in FASTA format
+    var selectFastaURI = "/speciestree/sequences";
+
+    
+    var YUITreeLoaded = false,
+        speciesTreeTabView,
+        sunburst,
+        slider;
+
+    document.observe("dom:loaded", function() {
+
+      // set up the tree tabs
+      speciesTreeTabView = new YAHOO.widget.TabView("speciesTreeTabs");
+
+      // add a listener for the tab change, so that we can load the YUI species
+      // tree on-demand
+      speciesTreeTabView.addListener( "activeTabChange", function() {
+        if ( YUITreeLoaded ) {
+          return;
+        }
+
+        var r = new Ajax.Request(
+          stUri,
+          {
+            method:     "get",
+            parameters: { acc: "PF02272",
+                          ie:  Prototype.Browser.IE },
+            onSuccess:  stSuccess,
+            onFailure:  stFailure
+          }
+        );
+
+        YUITreeLoaded = true;
+      } );
+
+    } ); 
+
+    // ]]>
+  </script>
+
+</div>
+
+<!-- end of species block -->
+
+<!-- start interactions block -->
+
+<div class="block" id="ipfamBlock">
+  <div class="handle">
+    <h1>Interactions</h1>
+  </div>
+  <div class="blockContent">
+
+    <p>
+      There are 
+      <b>2</b> 
+      interactions for this family.
+      <span onclick="reveal( this, 'intNotes', false, true );"
+            class="moreLink">
+        More...</span>
+    </p>
+    <div id="intNotes" style="display: none">
+      <p>
+        We determine these interactions using 
+        <a href="http://ipfam.org/"><em>i</em>Pfam</a>, 
+        which considers the interactions between residues in three-dimensional 
+        protein structures and maps those interactions back to Pfam families. 
+        You can find more information about the <em>i</em>Pfam algorithm in the
+        <a href="http://bioinformatics.oupjournals.org/cgi/content/full/21/3/410">
+          journal article</a> that accompanies the website.
+      </p>
+      <hr />
+    </div>
+
+    
+    
+      <span class="listItem"> 
+        
+        <a href="/family/PF02272">
+          DHHA1</a>
+        </span>
+        
+    
+      <span class="listItem"> 
+        
+          <a href="/family/PF01368">
+            DHH</a>
+          </span>
+        
+    
+
+  </div>
+</div>
+
+<!-- end interactions block -->
+
+<!-- start pdb block -->
+
+<div class="block" id="pdbBlock">
+  <div class="handle">
+    <h1>Structures</h1>
+  </div>
+  <div class="blockContent">  
+    <p>
+      For those sequences which have a structure in the
+      <a class="ext" href="http://www.wwpdb.org/">Protein DataBank</a>, we
+      use the mapping between <a class="ext" 
+        href="http://www.uniprot.org/">UniProt</a>, PDB and Pfam coordinate
+      systems from the <a class="ext" 
+        href="http://www.ebi.ac.uk/pdbe/">PDBe</a> group, to allow us to map
+      Pfam domains onto UniProt sequences and three-dimensional protein 
+      structures. The table below
+      shows the structures on which the <strong>DHHA1</strong>
+      domain has been found. There are 74
+      instances of this domain found in the PDB. Note that there may be 
+      multiple copies of the domain in a single PDB structure, since many 
+      structures contain multiple copies of the same protein sequence.
+    </p>
+
+    <div id="familyStructureTabHolder">
+      <p id="fstrucph" class="loading">
+        Loading structure mapping...
+      </p>  
+    </div> <!-- end of familyStructureTabHolder -->
+  </div>
+
+  <script type="text/javascript">
+    // <![CDATA[
+    
+    document.observe( "dom:loaded", function() {
+      var r = new Ajax.Request( 
+        "/family/PF02272/mapping",
+        { 
+          method: 'get',
+          onSuccess: function ( oResponse ) {
+
+            $("familyStructureTabHolder").update( oResponse.responseText );
+
+            // how many columns are there in the table ?
+            var rows = $("structuresTable").select("tr");
+            
+            if ( rows.size() <= 1 ) {
+              $("clanStructureTabHolder").update( "There is no structure mapping for this family." );
+              return;
+            }
+             
+            numColsTable = rows.first().select("th").size();
+     
+            // walk over all of the cells in the table and add listeners for mouseover and 
+            // mouseout events
+            $("structuresTable")
+              .select( "td" )
+              .each( function( cell ) {
+                cell.onmouseover = highlight.mouseoverHandler.bindAsEventListener( highlight );
+                cell.onmouseout  = highlight.mouseoutHandler.bindAsEventListener( highlight );
+              } );
+          },
+          onFailure: function () {
+            $("familyStructureTabHolder").update( "Graphics loading failed." );
+          },
+          on204: function () {
+            $("familyStructureTabHolder").update( "No structure mappings found." );
+          }
+        }
+      );
+    } );
+
+// ]]>
+  </script>
+
+</div>
+
+<!-- end pdb block -->
+
+    </div> <!-- end of "content" -->
+
+  </div>
+
+  <div class="cleaner"></div>
+
+</div> <!-- end of "wrap" -->
+
+<!-- ====================================================================== -->
+
+    <!-- end of content -->
+
+    
+    <!-- start of footer -->
+    <div id="footer"></div>
+
+    <div class="cleaner"><!-- wrap --></div>
+    <!-- end of footer -->
+
+    </div>
+
+    <script type="text/javascript">
+      // <![CDATA[
+      Event.observe( window, 'load', addHoverListeners, false );
+      // ]]>
+    </script>
+
+    
+
+<!-- footer start -->
+
+<div id="siteFooter">
+
+  <div style="display:block">
+    <div style="margin:auto; width:60%">
+
+      <div style="display:inline-block">
+        <a href="https://www.elixir-europe.org/about-us/why-needed">
+          <img src="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.2/images/logos/assorted/elixir_kitemark-60px.png">
+        </a>
+      </div>
+
+      <div style="width:29%; display:inline-block; vertical-align:top; text-align:left">
+        <h5 style="font-size:1.5em">
+          <a href="https://www.elixir-europe.org/about-us/why-needed">
+            <span>Pfam</span> is part of the ELIXIR infrastructure
+          </a>
+        </h5>
+        <small>
+          <span >Pfam is an Elixir service</span>
+          <span><a href="https://www.elixir-europe.org/about-us/why-needed">Read more</a></span>
+        </small>
+      </div>
+
+    </div>
+  </div>
+
+  <p>
+    Comments or questions on the site? Send a mail to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#112;&#102;&#097;&#109;&#045;&#104;&#101;&#108;&#112;&#064;&#101;&#098;&#105;&#046;&#097;&#099;&#046;&#117;&#107;">&#112;&#102;&#097;&#109;&#045;&#104;&#101;&#108;&#112;&#064;&#101;&#098;&#105;&#046;&#097;&#099;&#046;&#117;&#107;</a>.&nbsp;
+  </p>
+  <p class="spaced"><a href="http://www.embl.org/">European Molecular Biology Laboratory</a></p>
+  <script>
+        var newDataProtectionNotificationBanner = document.createElement('script');
+        newDataProtectionNotificationBanner.src = '/static/javascripts/ebi-notification-banner.js';
+        document.head.appendChild(newDataProtectionNotificationBanner);
+        newDataProtectionNotificationBanner.onload = function() {
+            ebiFrameworkRunDataProtectionBanner('compliance'); // invoke the banner
+            var badElement = document.querySelector('div#data-protection-banner div.row');
+            if (badElement) {
+              badElement.style.marginLeft = "0px";
+              badElement.style.marginRight = "30px";
+            }
+        };
+    </script>
+</div>
+
+<!-- footer end -->
+
+  </body>
+
+</html>
+

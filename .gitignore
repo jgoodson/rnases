@@ -1,0 +1,9 @@
+.snakemake
+*.aln
+*.html
+*.ssi
+*.hmm.*
+*.fasta
+*.tblout
+*.domtblout
+Snakefile.save

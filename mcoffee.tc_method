@@ -1,0 +1,11 @@
+*TC_METHOD_FORMAT_01
+***************mcoffee_method.tc_method*********
+EXECUTABLE t_coffee
+ALN_MODE multiple
+OUT_MODE aln
+IN_FLAG -in=
+OUT_FLAG -outfile=
+SEQ_TYPE S
+PARAM -method=kalign_msa,maffteinsi_msa,clustalo_msa,muscle_msa,poa_msa
+PARAM 2>/dev/null
+*******************************************************
