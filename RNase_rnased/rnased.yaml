@@ -1,0 +1,12 @@
+name: rnased
+domains:
+  - PF01612
+interpro: IPR006292
+examples:
+  - RND_ECOLI
+  - Q9ZD81_RICPR
+  - RND_HAEIN
+  - I6XF17_MYCTU
+#  - RRP6_YEAST
+#  - Q9VFF3_DROME
+#  - PMC2_HUMAN

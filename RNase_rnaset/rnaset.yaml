@@ -1,0 +1,10 @@
+name: rnaset
+domains:
+  - PF00929
+interpro: IPR005987
+examples:
+  - RNT_ECOLI
+  - RNT_VIBCH
+  - RNT_BUCSP
+  - RNT_HAEIN
+  - RNT_XYLFA
