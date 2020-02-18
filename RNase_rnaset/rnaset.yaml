@@ -5,6 +5,6 @@ interpro: IPR005987
 examples:
   - RNT_ECOLI
   - RNT_VIBCH
-  - RNT_BUCSP
+  - RNT_BUCAP
   - RNT_HAEIN
   - RNT_XYLFA

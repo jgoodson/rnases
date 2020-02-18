@@ -8,6 +8,17 @@ rule find_pfam_in_uniprot:
     shell:
         "hmmsearch --tblout {output[0]:q} --domtblout {output[1]:q} -E 0.001 --cpu 4 {input:q} > /dev/null"
 
+rule find_hmm_in_fasta:
+    input:
+        "{hmm_name}.hmm",
+        "{fasta_name}.fasta"
+    output:
+        multiext("{hmm_name}_{fasta_name}", ".tblout", ".domtblout")
+    threads: 2
+    shell:
+        "hmmsearch --tblout {output[0]:q} --domtblout {output[1]:q} -E 0.001 --cpu 4 {input:q} > /dev/null"
+
+
 wildcard_constraints:
     method="\w+",
     rnase="RNase_\w+",
@@ -35,6 +46,9 @@ rule press_hmm:
     input:
         "{file}.hmm"
     output:
-        "{file}.hmm.h3f"
+        "{file}.hmm.h3m",
+        "{file}.hmm.h3i",
+        "{file}.hmm.h3f",
+        "{file}.hmm.h3p"
     shell:
         "hmmpress {input:q}"
