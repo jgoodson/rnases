@@ -6,7 +6,7 @@ rule find_pfam_in_uniprot:
         multiext("alldoms/PF{pfam_num}", ".tblout", ".domtblout")
     threads: 2
     shell:
-        "hmmsearch --tblout {output[0]:q} --domtblout {output[1]:q} --cut_nc --cpu 4 {input:q} > /dev/null"
+        "hmmsearch --tblout {output[0]:q} --domtblout {output[1]:q} -E 0.001 --cpu 4 {input:q} > /dev/null"
 
 wildcard_constraints:
     method="\w+",

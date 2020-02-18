@@ -18,3 +18,4 @@ rule download_pfam_hmm:
 include: "hmmer.Snakefile"
 include: "fasta.Snakefile"
 include: "alignment.Snakefile"
+
