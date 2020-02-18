@@ -3,8 +3,8 @@ rule prep_uniprot:
         "uniprot.fasta"
     shell:
         """
-        wget -O - ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz | gzip -dc | sed 's_^>\w\{2\}|\([A-Z0-9]\{6,10\}\)|.*_>\1_' >! {output:q}
-        wget -O - ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_trembl.fasta.gz | gzip -dc | sed 's_^>\w\{2\}|\([A-Z0-9]\{6,10\}\)|.*_>\1_' >> {output:q}
+        wget -O - ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz | gzip -dc | sed 's_^>\w\{{2\}}|\([A-Z0-9]\{{6,10\}}\)|.*_>\1_' >! {output:q}
+        wget -O - ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_trembl.fasta.gz | gzip -dc | sed 's_^>\w\{{2\}}|\([A-Z0-9]\{{6,10\}}\)|.*_>\1_' >> {output:q}
         """
 
 rule sfetch_index:
