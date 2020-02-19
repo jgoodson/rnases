@@ -1,6 +1,6 @@
 rule prep_uniprot:
     output:
-        "uniprot.fasta"
+        protected("uniprot.fasta")
     shell:
         """
         #TODO: This doesn't work as expected when called from shell
@@ -11,9 +11,9 @@ rule prep_uniprot:
 
 rule sfetch_index:
     input:
-        "uniprot.fasta"
+        ancient("uniprot.fasta")
     output:
-        "uniprot.fasta.ssi"
+        protected("uniprot.fasta.ssi")
     shell:
         "esl-sfetch --index {input}"
 
