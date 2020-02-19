@@ -2,8 +2,6 @@ name: nrnb
 domains:
 interpro: IPR038763
 examples:
-  - NRNA_BACSU
-  - NRNA_MYCPN
-  - NRNA_THET8
-  - NRNA_MYCTU
-  - A0A3R9HUU0_STRSA
+  - NRNB_BACSU
+  - A0A5C5X7X8_9BACT
+  - A0A4U9VRP1_ACTPL

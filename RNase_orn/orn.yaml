@@ -11,3 +11,10 @@ examples:
   - ORN_CORDI
   - ORN_BURMA
   - ORN_YEAST
+  - ORN_VIBCH
+residues:
+  ORN_VIBCH:
+    108: S
+    129: Y
+    130: R
+    135: S

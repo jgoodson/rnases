@@ -5,4 +5,11 @@ interpro: IPR002562
 examples:
   - A9CG28_AGRFC
   - G4VUY7_9RHIZ
-  -
+  - A1UU18_BARBK
+resides:
+  A1UU18_BARBK:
+    31: L
+    79: H
+    103: K
+    135: Q
+    151: Y
