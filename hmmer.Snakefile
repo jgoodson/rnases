@@ -52,3 +52,8 @@ rule press_hmm:
         "{file}.hmm.h3p"
     shell:
         "hmmpress {input:q}"
+
+rule process_seed_hits:
+    input: ['RNase_{s}/{s}_seed.tc.expresso_uniprot.tblout'.format(s=s) for s in get_seeds()]
+    output: ['RNase_{s}/{s}_search.id'.format(s=s) for s in get_seeds()]
+    notebook: "Notebooks/ClassifyHits.ipynb"

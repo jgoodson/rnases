@@ -1,10 +1,4 @@
-def get_targets():
-    import os
-    folders = [f for f in os.scandir() if f.is_dir()]
-    target_bases = []
-    for hmm in (f for f in os.listdir('alldoms') if f.startswith('PF') and f.endswith('.hmm')):
-        target_bases.append('alldoms/'+hmm.rsplit('.',1)[0])
-    return [tb+'.full.fasta' for tb in target_bases]+[tb+'.hit.fasta' for tb in target_bases]
+configfile: "pipeline_conf.yaml"
 
 def get_seeds():
     import os
@@ -14,18 +8,15 @@ def get_seeds():
         files = os.listdir(folder)
         for f in files:
             if f.endswith('.yaml'):
-                seeds.append(folder.name+'/'+f)
+                seeds.append(f[:-5])
     return seeds
 
 def gen_res(seeds):
     hmms = []
     for seed in seeds:
-        folder, yaml = seed.split('/')
-        hmms.append(folder+'/'+yaml.split('.')[0]+'_seed.tc.expresso_uniprot.tblout')
+        folder, yaml = 'RNase_'+seed, seed+'.yaml'
+        hmms.append(folder+'/'+yaml.split('.')[0]+'_search.tcr.mcoffee.aln')
     return hmms
-
-rule all:
-    input: get_targets()
 
 rule seeds:
     input: gen_res(get_seeds())

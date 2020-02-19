@@ -3,7 +3,9 @@ rule prep_uniprot:
         "uniprot.fasta"
     shell:
         """
-        wget -O - ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz | gzip -dc | sed 's_^>\w\{{2\}}|\([A-Z0-9]\{{6,10\}}\)|.*_>\1_' >! {output:q}
+        #TODO: This doesn't work as expected when called from shell
+        #Current results in empty fasta header lines
+        wget -O - ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz | gzip -dc | sed 's_^>\w\{{2\}}|\([A-Z0-9]\{{6,10\}}\)|.*_>\1_' > {output:q}
         wget -O - ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_trembl.fasta.gz | gzip -dc | sed 's_^>\w\{{2\}}|\([A-Z0-9]\{{6,10\}}\)|.*_>\1_' >> {output:q}
         """
 
@@ -15,13 +17,13 @@ rule sfetch_index:
     shell:
         "esl-sfetch --index {input}"
 
-rule extract_fasta_by_seed:
+rule extract_fasta_by_id:
     input:
-        "RNase_{rnase_name}/{file}_seed.id",
+        "RNase_{rnase_name}/{file}.id",
         "uniprot.fasta",
         "uniprot.fasta.ssi"
     output:
-        "RNase_{rnase_name}/{file}_seed.full.fasta"
+        "RNase_{rnase_name}/{file}.full.fasta"
     shell:
         "esl-sfetch -f {input[1]:q} {input[0]:q} > {output:q}"
 
@@ -56,7 +58,7 @@ rule gen_seedlist_from_yaml:
     run:
         import yaml
         from UniprotDB.UniprotDB import SeqDB
-        s = SeqDB(host=('192.168.2.5',), on_demand=True)
+        s = SeqDB(host=(config['seqdb_host'],), on_demand=True)
         with open(input.file) as i:
             fam_info = yaml.safe_load(i)
         with open(output.file, 'w') as o:
