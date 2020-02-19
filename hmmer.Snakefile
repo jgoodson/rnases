@@ -56,4 +56,5 @@ rule press_hmm:
 rule process_seed_hits:
     input: ['RNase_{s}/{s}_seed.tc.expresso_uniprot.tblout'.format(s=s) for s in get_seeds()]
     output: ['RNase_{s}/{s}_search.id'.format(s=s) for s in get_seeds()]
+    log: notebook = "logs/notebooks/Processed_ClassifyHits.ipynb"
     notebook: "Notebooks/ClassifyHits.ipynb"
