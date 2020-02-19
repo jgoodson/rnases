@@ -15,7 +15,7 @@ def gen_res(seeds):
     hmms = []
     for seed in seeds:
         folder, yaml = 'RNase_'+seed, seed+'.yaml'
-        hmms.append(folder+'/'+yaml.split('.')[0]+'_search.tcr.mcoffee.aln')
+        hmms.append(folder+'/'+yaml.split('.')[0]+'_search.tcr.mcoffee_uniprot.tblout')
     return hmms
 
 rule seeds:
