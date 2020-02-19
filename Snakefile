@@ -23,7 +23,7 @@ rule seeds:
 
 rule clean:
     shell:
-        "rm RNase_*/*.hmm* RNase_*/*_seed.*.aln RNase_*/*_seed.full.fasta RNase_*/*_seed.id || true"
+        "rm RNase_*/*.hmm* RNase_*/*.aln RNase_*/*.full.fasta RNase_*/*.id || true"
 
 rule download_pfam_hmm:
     output:
