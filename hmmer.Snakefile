@@ -56,11 +56,15 @@ rule press_hmm:
 rule process_seed_hits:
     input: ['RNase_{s}/{s}_seed.tc.expresso_uniprot.tblout'.format(s=s) for s in get_seeds()]
     output: ['RNase_{s}/{s}_search.id'.format(s=s) for s in get_seeds()]
+    params:
+        outlabel="search"
     log: notebook = "logs/notebooks/Processed_ClassifyHits_seed.ipynb"
     notebook: "Notebooks/ClassifyHits.ipynb"
 
 rule process_search_hits:
     input: ['RNase_{s}/{s}_search.tcr.mcoffee_uniprot.tblout'.format(s=s) for s in get_seeds()]
     output: ['RNase_{s}/{s}_final.id'.format(s=s) for s in get_seeds()]
+    params:
+        outlabel="final"
     log: notebook = "logs/notebooks/Processed_ClassifyHits_search.ipynb"
     notebook: "Notebooks/ClassifyHits.ipynb"
