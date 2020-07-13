@@ -6,7 +6,7 @@ rule trim_alignment:
     output:
         "{file}.trim.aln"
     shell:
-        "t_coffee -other_pg seq_reformat -in {input} -action +remove_seq unique +rm_gap 95  > {output}"
+        " -other_pg seq_reformat -in {input} -action +remove_seq unique +rm_gap 95  > {output}"
 
 
 rule iqtree:
@@ -25,5 +25,5 @@ rule iqtree:
         "{file}.treefile",
         "{file}.ufboot"
     shell:
-        "iqtree -m LG+G4 -s {input} -pre {wildcards.file} "
+        " -m LG+G4 -s {input} -pre {wildcards.file} "
         "-nt AUTO -bb 1000 -bnni -nm 10000 -ninit 1000 --radius 20 -ntop 100 -nbest 10"
