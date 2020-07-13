@@ -80,7 +80,7 @@ def get_seeds():
 
 rule combine_fasta:
     input:
-        ["RNase_{rnase_name}/{rnase_name}_{category}.fasta" for rnase_name in get_seeds()]
+        [f"RNase_{rnase_name}/{rnase_name}_{{category}}.fasta" for rnase_name in get_seeds()]
     output:
         "RNase_all/{category}.fasta"
     shell:

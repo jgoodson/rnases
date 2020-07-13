@@ -11,15 +11,10 @@ def get_seeds():
                 seeds.append(f[:-5])
     return seeds
 
-def gen_res(seeds):
-    hmms = []
-    for seed in seeds:
-        folder, yaml = 'RNase_'+seed, seed+'.yaml'
-        hmms.append(folder+'/'+yaml.split('.')[0]+'_final.id')
-    return hmms
+rule all:
+    input:
+        [f"RNase_all/clusterRes_final.full_0.{i}_rep_seq.tcr.mcoffee.aln" for i in range(3,8)]
 
-rule seeds:
-    input: gen_res(get_seeds())
 
 rule clean:
     shell:
@@ -34,4 +29,5 @@ rule download_pfam_hmm:
 include: "hmmer.Snakefile"
 include: "fasta.Snakefile"
 include: "alignment.Snakefile"
+include: "mmseqs.Snakefile"
 
