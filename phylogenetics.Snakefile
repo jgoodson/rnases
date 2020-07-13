@@ -16,7 +16,14 @@ rule iqtree:
         "{file}.trim.aln"
     output:
         "{file}.iqtree",
-        "{file}."
+        "{file}.contree",
+        "{file}.bionj",
+        "{file}.ckp.gz",
+        "{file}.log",
+        "{file}.mldist",
+        "{file}.splits.nex",
+        "{file}.treefile",
+        "{file}.ufboot"
     shell:
         "iqtree -m LG+G4 -s {input} -pre {wildcards.file} "
         "-nt AUTO -bb 1000 -bnni -nm 10000 -ninit 1000 --radius 20 -ntop 100 -nbest 10"
