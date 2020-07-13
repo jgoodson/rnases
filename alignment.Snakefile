@@ -11,7 +11,7 @@ rule regressive_tcoffee_align:
         "{file}.full.fasta"
     output:
         "{file}.tcr.{method}.aln"
-    threads: 4
+    threads: 0
     shell:
         "t_coffee -reg -seq {input:q} -reg_method {wildcards.method}.tc_method -reg_tree mbed -reg_nseq 100 -reg_thread {threads} -outfile {wildcards.file}.tcr.{wildcards.method}.aln -email {config[email]} -run_name `mktemp -d`/run"
 
