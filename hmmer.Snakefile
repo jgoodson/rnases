@@ -1,4 +1,6 @@
 rule find_pfam_in_uniprot:
+    container:
+        "docker://jrgoodson/hmmer"
     input:
         "alldoms/PF{pfam_num}.hmm",
         "uniprot.fasta"
@@ -9,6 +11,8 @@ rule find_pfam_in_uniprot:
         "hmmsearch --tblout {output[0]:q} --domtblout {output[1]:q} -E 0.001 --cpu 4 {input:q} > /dev/null"
 
 rule find_hmm_in_fasta:
+    container:
+        "docker://jrgoodson/hmmer"
     input:
         "{hmm_name}.hmm",
         "{fasta_name}.fasta"
@@ -26,6 +30,8 @@ wildcard_constraints:
     protein="\w+"
 
 rule build_hmm_from_examples:
+    container:
+        "docker://jrgoodson/hmmer"
     input:
         "{rnase}/{protein}.{aligner}.{method}.aln"
     output:
@@ -34,6 +40,8 @@ rule build_hmm_from_examples:
         "hmmbuild {output:q} {input:q}"
 
 rule jackhmmer_expand:
+    container:
+        "docker://jrgoodson/hmmer"
     input:
         "{rnase}/{protein}.{aligner}.{method}.hmm",
         "uniprot.fasta"
@@ -43,6 +51,8 @@ rule jackhmmer_expand:
         "jackhmmer --incE 1e-25 {input[0]:q} {input[1]:q}"
 
 rule press_hmm:
+    container:
+        "docker://jrgoodson/hmmer"
     input:
         "{file}.hmm"
     output:

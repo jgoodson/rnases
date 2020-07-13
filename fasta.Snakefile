@@ -67,17 +67,6 @@ rule gen_seedlist_from_yaml:
                     print(example)
                     raise
 
-def get_seeds():
-    import os
-    folders = [f for f in os.scandir() if f.is_dir()]
-    seeds = []
-    for folder in folders:
-        files = os.listdir(folder)
-        for f in files:
-            if f.endswith('.yaml'):
-                seeds.append(f[:-5])
-    return seeds
-
 rule combine_fasta:
     input:
         [f"RNase_{rnase_name}/{rnase_name}_{{category}}.fasta" for rnase_name in get_seeds()]
