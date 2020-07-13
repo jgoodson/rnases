@@ -56,7 +56,7 @@ rule gen_seedlist_from_yaml:
     run:
         import yaml
         from UniprotDB.UniprotDB import SeqDB
-        s = SeqDB(host=(config['seqdb_host'],), on_demand=True)
+        s = SeqDB(host=(config['seqdb_host']), on_demand=True)
         with open(input.file) as i:
             fam_info = yaml.safe_load(i)
         with open(output.file, 'w') as o:
@@ -66,3 +66,22 @@ rule gen_seedlist_from_yaml:
                 except AttributeError:
                     print(example)
                     raise
+
+def get_seeds():
+    import os
+    folders = [f for f in os.scandir() if f.is_dir()]
+    seeds = []
+    for folder in folders:
+        files = os.listdir(folder)
+        for f in files:
+            if f.endswith('.yaml'):
+                seeds.append(f[:-5])
+    return seeds
+
+rule combine_fasta:
+    input:
+        ["RNase_{rnase_name}/{rnase_name}_{category}.fasta" for rnase_name in get_seeds()]
+    output:
+        "RNase_all/{category}.fasta"
+    shell:
+        "cat {input} > {output}"
