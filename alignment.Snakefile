@@ -8,7 +8,7 @@ rule basic_tcoffee_align:
     output:
         "{file}{fasta_type}.tc.{mode}.aln"
     shell:
-        "t_coffee -seq {input:q} -mode {wildcards.mode} -pdb_type dn -outfile {wildcards.file}.tc.{wildcards.mode}.aln -output=fasta_aln -email {config[email]} -run_name `mktemp -d`/run"
+        "t_coffee -seq {input:q} -mode {wildcards.mode} -pdb_type dn -outfile {wildcards.file}{wildcards.fasta_type}.tc.{wildcards.mode}.aln -output=fasta_aln -email {config[email]} -run_name `mktemp -d`/run"
 
 rule regressive_tcoffee_align:
     container:
@@ -21,7 +21,7 @@ rule regressive_tcoffee_align:
         "{file}{fasta_type}.tcr.{mode}.aln"
     threads: 4
     shell:
-        "t_coffee -reg -seq {input:q} -reg_method {wildcards.mode}.tc_method -reg_tree parttree -reg_nseq 100 -thread={threads} -outfile {wildcards.file}.tcr.{wildcards.mode}.aln -email {config[email]} -run_name `mktemp -d`/run"
+        "t_coffee -reg -seq {input:q} -reg_method {wildcards.mode}.tc_method -reg_tree parttree -reg_nseq 100 -thread={threads} -outfile {wildcards.file}{wildcards.fasta_type}.tcr.{wildcards.mode}.aln -email {config[email]} -run_name `mktemp -d`/run"
 
 rule adaptive_tcoffee_align:
     container:
@@ -35,7 +35,7 @@ rule adaptive_tcoffee_align:
     threads: 4
     shell:
          "if [ `grep -c '>' {input}` -lt 200 ]; then "
-         "t_coffee -seq {input:q} -mode {wildcards.mode} -pdb_type dn -outfile {wildcards.file}.tc.{wildcards.mode}.aln -output=fasta_aln -email {config[email]} -run_name `mktemp -d`/run"
+         "t_coffee -seq {input:q} -mode {wildcards.mode} -pdb_type dn -outfile {wildcards.file}.tca.{wildcards.mode}.aln -output=fasta_aln -email {config[email]} -run_name `mktemp -d`/run"
          "; else "
-         "t_coffee -reg -seq {input:q} -reg_method {wildcards.mode}.tc_method -reg_tree parttree -reg_nseq 100 -thread={threads} -outfile {wildcards.file}.tcr.{wildcards.mode}.aln -email {config[email]} -run_name `mktemp -d`/run"
+         "t_coffee -reg -seq {input:q} -reg_method {wildcards.mode}.tc_method -reg_tree parttree -reg_nseq 100 -thread={threads} -outfile {wildcards.file}{wildcards.fasta_type}.tca.{wildcards.mode}.aln -email {config[email]} -run_name `mktemp -d`/run"
          "; fi"
