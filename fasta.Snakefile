@@ -8,6 +8,8 @@ rule prep_uniprot:
         """
 
 rule sfetch_index:
+    container:
+        "docker://jrgoodson/hmmer"
     input:
         ancient("uniprot.fasta")
     output:
@@ -16,6 +18,8 @@ rule sfetch_index:
         "esl-sfetch --index {input}"
 
 rule extract_fasta_by_id:
+    container:
+        "docker://jrgoodson/hmmer"
     input:
         "RNase_{rnase_name}/{file}.id",
         "uniprot.fasta",
@@ -29,6 +33,8 @@ wildcard_constraints:
     pfam_name="PF\w+",
 
 rule extract_fasta_by_hits:
+    container:
+        "docker://jrgoodson/hmmer"
     input:
         "{pfam_name}.tblout",
         "uniprot.fasta",
@@ -39,6 +45,8 @@ rule extract_fasta_by_hits:
         "grep -v '^#' {input[0]:q} | awk '{{print $1}}' | uniq | esl-sfetch -f {input[1]:q} - > {output:q}"
 
 rule extract_fragments_by_hits:
+    container:
+        "docker://jrgoodson/hmmer"
     input:
         "{pfam_name}.domtblout",
         "uniprot.fasta",
