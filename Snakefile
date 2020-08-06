@@ -2,7 +2,7 @@ configfile: "pipeline_conf.yaml"
 
 def get_seeds():
     import os
-    folders = [f for f in os.scandir() if f.is_dir()]
+    folders = [f for f in os.scandir() if f.is_dir() and f.name.startswith('RNase_')]
     seeds = []
     for folder in folders:
         files = os.listdir(folder)
@@ -13,7 +13,7 @@ def get_seeds():
 
 rule all:
     input:
-        [f"RNase_all/clusterRes_final.full_0.{i}_rep_seq.tcr.mcoffee.aln" for i in range(3,8)]
+        [f"RNase_all/clusterRes_final.full_0.{i}_rep_seq.tcr.mcoffee.tc_method.aln_trim" for i in range(3,8)]
 
 
 rule clean:
