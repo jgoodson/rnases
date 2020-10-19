@@ -58,8 +58,13 @@ rule download_pfam_hmm:
     shell:
         "wget -O alldoms/PF{pfam_name}.hmm https://pfam.xfam.org/family/PF{pfam_num}/hmm"
 
+rule itol:
+    input:
+        "allspectree_class.itol-rnase.txt"
+
 include: "hmmer.Snakefile"
 include: "fasta.Snakefile"
 include: "alignment.Snakefile"
 include: "mmseqs.Snakefile"
 include: "phylogenetics.Snakefile"
+include: "processing.Snakefile"
