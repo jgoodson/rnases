@@ -24,7 +24,7 @@ rule find_hmm_in_fasta:
 
 
 wildcard_constraints:
-    method="\w+",
+    method="\w+\.?\w+",
     rnase="RNase_\w+",
     aligner="\w+",
     protein="\w+"
@@ -33,9 +33,9 @@ rule build_hmm_from_examples:
     container:
         "docker://jrgoodson/hmmer"
     input:
-        "{rnase}/{protein}.{aligner}.{method}.aln"
+        "{f}.aln"
     output:
-        "{rnase}/{protein}.{aligner}.{method}.hmm"
+        "{f}.hmm"
     shell:
         "hmmbuild {output:q} {input:q}"
 
@@ -64,15 +64,17 @@ rule press_hmm:
         "hmmpress {input:q}"
 
 rule process_seed_hits:
-    input: ['RNase_{s}/{s}_seed.tc.expresso_uniprot.tblout'.format(s=s) for s in get_seeds()]
-    output: ['RNase_{s}/{s}_search.id'.format(s=s) for s in get_seeds()]
+    conda: "envs/notebook.yaml"
+    input: [f'RNase_{s}/{s}_seed.full.tc.mcoffee_uniprot.tblout' for s in get_seeds()]
+    output: [f'RNase_{s}/{s}_search.id' for s in get_seeds()]
     params:
         outlabel="search"
     log: notebook = "logs/notebooks/Processed_ClassifyHits_seed.ipynb"
     notebook: "Notebooks/ClassifyHits.ipynb"
 
 rule process_search_hits:
-    input: ['RNase_{s}/{s}_search.tcr.mcoffee_uniprot.tblout'.format(s=s) for s in get_seeds()]
+    conda: "envs/notebook.yaml"
+    input: ['RNase_{s}/{s}_search.full.tcr.mcoffee.tc_method_uniprot.tblout'.format(s=s) for s in get_seeds()]
     output: ['RNase_{s}/{s}_final.id'.format(s=s) for s in get_seeds()]
     params:
         outlabel="final"

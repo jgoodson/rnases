@@ -2,7 +2,7 @@ rule basic_tcoffee_align:
     container:
         "docker://jrgoodson/t_coffee_beta"
     wildcard_constraints:
-        fasta_type=".full|_rep_seq"
+        fasta_type=".full|_rep_seq|_search|_seed"
     input:
         "{file}{fasta_type}.fasta"
     output:
@@ -15,13 +15,13 @@ rule regressive_tcoffee_align:
     container:
         "docker://jrgoodson/t_coffee_beta"
     wildcard_constraints:
-        fasta_type=".full|_rep_seq"
+        fasta_type=".full|_rep_seq|_search|_seed"
     input:
         "{file}{fasta_type}.fasta"
     output:
         "{file}{fasta_type}.tcr.{mode}.aln"
     threads: 4
-    shadow: "shallow"
+    shadow: "full"
     shell:
         "t_coffee -reg -seq {input:q} -reg_method {wildcards.mode} -reg_tree mbed -reg_nseq 100 -reg_thread {threads} -outfile {wildcards.file}{wildcards.fasta_type}.tcr.{wildcards.mode}.aln -email {config[email]}"
 
@@ -54,4 +54,4 @@ rule trim_align:
     threads: 1
     shadow: "shallow"
     shell:
-        "t_coffee -other_pg seq_reformat -in {input:q} -output fasta_aln -action +rm_gap 90 > {output:q}"
+        "t_coffee -other_pg seq_reformat -in {input:q} -output fasta_aln -action +grep NAME REMOVE DASH +rm_gap 90 > {output:q}"

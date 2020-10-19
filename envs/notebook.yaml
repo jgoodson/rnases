@@ -1,7 +1,9 @@
 channels:
   - conda-forge
+  - jgoodson
 dependencies:
   - numpy
   - pandas
   - matplotlib
   - seaborn
+  - uniprotdb

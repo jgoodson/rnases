@@ -4,3 +4,4 @@ interpro: IPR038763
 examples:
   - NRNB_BACSU
   - A0A5C5X7X8_9BACT
+family: nrn

@@ -1,19 +1,8 @@
-rule trim_alignment:
-    container:
-        "docker://jrgoodson/t_coffee_beta"
-    input:
-        "{file}.aln"
-    output:
-        "{file}.trim.aln"
-    shell:
-        " -other_pg seq_reformat -in {input} -action +remove_seq unique +rm_gap 95  > {output}"
-
-
 rule iqtree:
     container:
         "docker://jrgoodson/iqtree2"
     input:
-        "{file}.trim.aln"
+        "{file}.aln_trim"
     output:
         "{file}.iqtree",
         "{file}.contree",
@@ -25,5 +14,14 @@ rule iqtree:
         "{file}.treefile",
         "{file}.ufboot"
     shell:
-        " -m LG+G4 -s {input} -pre {wildcards.file} "
-        "-nt AUTO -bb 1000 -bnni -nm 10000 -ninit 1000 --radius 20 -ntop 100 -nbest 10"
+        "iqtree2 -m LG+G4 -s {input} -pre {wildcards.file} "
+        "-nt AUTO -bb 1000 -bnni -nm 10000 --radius 20 -ntop 100 -nbest 10"
+
+rule superfamily_tree:
+    conda: "envs/notebook.yaml"
+    input: "{file}.contree"
+    output:
+        "{file}.nwk",
+        "{file}_families.txt",
+    log: notebook = "logs/notebooks/Processed_superfamilytree_{file}.ipynb"
+    notebook: "Notebooks/SuperfamilyTree.ipynb"

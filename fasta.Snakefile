@@ -77,8 +77,9 @@ rule gen_seedlist_from_yaml:
 
 rule combine_fasta:
     input:
-        [f"RNase_{rnase_name}/{rnase_name}_{{category}}.fasta" for rnase_name in get_seeds()]
+        lambda wildcards: \
+        [f"RNase_{rnase_name}/{rnase_name}_{{category}}.fasta" for rnase_name in get_family(wildcards.family)]
     output:
-        "RNase_all/{category}.fasta"
+        "Family_{family}/{category}.fasta"
     shell:
         "cat {input} > {output}"

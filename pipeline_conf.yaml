@@ -1,2 +1,3 @@
-seqdb_host: 'localhost'
+seqdb_host: '~/.seqdb'
+seqdb_type: 'lmdb'
 email: jgoodson@umd.edu

@@ -6,6 +6,6 @@ OUT_MODE aln
 IN_FLAG -in=
 OUT_FLAG -outfile=
 SEQ_TYPE S
-PARAM -method=kalign_msa,maffteinsi_msa,clustalo_msa,muscle_msa,poa_msa
+PARAM -method=kalign_msa,maffteinsi_msa,clustalo_msa,muscle_msa
 PARAM 2>/dev/null
 *******************************************************
